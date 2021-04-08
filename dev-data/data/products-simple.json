@@ -1,0 +1,74 @@
+[
+  {
+    "id": 0,
+    "name": "Chuck Taylor",
+    "brand": "Converse",
+    "price": 4990,
+    "description": "The classic of all classics, the converse chuck taylor all star hi top black, is the original shoe from 1917. For years and years, punks and poets alike have coveted these shoes. Wearable for any occasion.",
+    "images": ["converse.png"]
+  },
+  {
+    "id": 1,
+    "name": "Hoodie",
+    "brand": "",
+    "price": 397,
+    "description": "",
+    "images": ["White Hoodie.png"]
+  },
+  {
+    "id": 2,
+    "name": "The Forest Hiker",
+    "brand": "",
+    "price": 397,
+    "description": "",
+    "images": ["Color pant.png"]
+  },
+  {
+    "id": 3,
+    "name": "The Forest Hiker",
+    "brand": "",
+    "price": 397,
+    "description": "",
+    "images": ["bucket-hat.png"]
+  },
+  {
+    "id": 4,
+    "name": "The Forest Hiker",
+    "brand": "",
+    "price": 397,
+    "description": "",
+    "images": ["Surgical mask.png"]
+  },
+  {
+    "id": 5,
+    "name": "The Forest Hiker",
+    "brand": "",
+    "price": 397,
+    "description": "",
+    "images": ["School bag.png"]
+  },
+  {
+    "id": 6,
+    "name": "The Forest Hiker",
+    "brand": "",
+    "price": 397,
+    "description": "",
+    "images": ["Bean bag.png"]
+  },
+  {
+    "id": 7,
+    "name": "The Forest Hiker",
+    "brand": "",
+    "price": 397,
+    "description": "",
+    "images": ["ukulele.png"]
+  },
+  {
+    "id": 8,
+    "name": "The Forest Hiker",
+    "brand": "",
+    "price": 397,
+    "description": "A sweet \"aww\"-inspiring tale of school life begins!!At school, Kyouko Hori is known for being smart, attractive, and popular. On the other hand, her classmate, the boring, gloomy Izumi Miyamura tends to get painted as a \"loser fanboy.\"",
+    "images": ["Horimiya manga.jpg"]
+  }
+]

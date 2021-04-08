@@ -17,6 +17,7 @@ const signToken = (id) => {
 const createSendToken = (user, statusCode, res) => {
   // Calling Token function
   const token = signToken(user._id);
+
   // Sending token through cookie
   const cookieOptions = {
     // In miliseconds
@@ -116,10 +117,10 @@ exports.protect = catchAsync(async (req, res, next) => {
 });
 
 // Authorization
-// Forbidding from deleting tours You have to admin or lead-guide
+// Forbidding from deleting products You have to admin
 exports.restrictTo = (...roles) => {
   return (req, res, next) => {
-    // roles ['admin', 'lead-guide']
+    // roles ['admin']
     if (!roles.includes(req.user.role)) {
       return next(
         new AppError('You dont have the permission to perform this action', 403)

@@ -1,0 +1,19 @@
+extends base
+
+block content
+    main.main.main--product 
+        .product--container 
+            .product--picture 
+                img.product__img(src=`/img/products/${product.images}`,alt=`${product.name}`, draggable="false")
+                
+            .product--detail    
+                .product--detail__box 
+                    .product--name= product.name
+                    p.product--price-box 
+                        span.product--price= `Rs. ${product.price}`
+                    button.nav__el.nav__el--cta.buy--btn Buy Now 
+                    .product__description 
+                        .product__description--detail 
+                            h1.description= `About ${product.name}` 
+                            p.description-pg= `${product.description}`
+

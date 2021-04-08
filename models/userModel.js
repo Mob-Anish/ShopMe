@@ -55,13 +55,6 @@ userSchema.pre('save', async function (next) {
   next();
 });
 
-// This is for all find methods
-userSchema.pre(/^find/, function (next) {
-  // this points to the current query obj.
-  this.find({ role: { $ne: 'admin' } });
-  next();
-});
-
 // Checking password with user password
 // Here we use instance methods which can be accessible to all docs of userSchema i.e. methods
 userSchema.methods.correctPassword = async function (

@@ -11,7 +11,7 @@ router
 
 router
   .route('/:id')
-  .get(tourController.getProduct)
+  .get(productController.getProduct)
   .patch(productController.updateProduct)
   .delete(productController.deleteProduct);
 

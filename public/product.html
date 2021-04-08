@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,400i,700" rel="stylesheet"/>
+    <link rel="stylesheet" href="css/style.css" />
+    <title>ShopMe</title>
+</head>
+<body>
+    <!------- Header Content -------->
+    <header class="header">
+        <nav class="nav nav--products">
+          <a href="#" class="nav__el">Products</a>
+          <form class="nav__search">
+            <button class="nav__search-btn">
+              <svg>
+                <use xlink:href="img/icons.svg#icon-search"></use>
+              </svg>
+            </button>
+            <input
+              type="text"
+              placeholder="Search products . . . ."
+              class="nav__search-input"
+            />
+          </form>
+        </nav>
+
+        <div class="header__logo">
+            <a href="/shopme.html" class="header__logo--link">ShopMe</a>
+        </div>
+  
+        <nav class="nav nav--user">
+            <!--
+              <a href="#" class="nav__el">
+                <span>Anish</span>
+              </a>
+            -->
+            <button class="nav__el">Log in</button>
+            <button class="nav__el nav__el--cta">Sign up</button>
+        </nav>
+    </header>
+
+    <!----- MAIN CONTENT ------>
+    <main class="main main--product">
+        <div class="product--container">
+            <div class="product--picture">
+                <img src="img/products/converse.png" alt="Product 1" class="product__img" draggable="false">
+            </div>
+
+            <div class="product--detail">
+                <div class="product--detail__box">
+                    <h1 class="product--name">Chuck Taylor</h1>
+                    <p class="product--price-box">
+                        <span class="product--price">
+                            Rs. 4990
+                        </span>
+                    </p>
+                    <button class="nav__el nav__el--cta buy--btn">Buy Now</button>
+                    <div class="product__description">
+                        <div class="product__description--detail">
+                            <h1 class="description">About Chuck Taylor</h1>
+                            <p class="description-pg">The classic of all classics, the converse chuck taylor all star hi top black, is the original shoe from 1917. For years and years, punks and poets alike have coveted these shoes. Wearable for any occasion.</p>
+                        </div>
+                    </div>
+                </div>  
+            </div>
+        </div>
+    </main>
+
+    <!---- FOOTER CONTENT ---->
+    <footer class="footer">
+        <div class="footer__logo">
+          <img src="img/logo-green.png" alt="ShopMe Logo" />
+        </div>
+        <div class="footer__copyright">
+          <p class="footer__copyright--header">&copy; by Anish Manandhar.</p>
+          <p>This is a fictional shopping website.</p>
+        </div>
+    </footer>
+</body>
