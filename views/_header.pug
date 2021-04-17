@@ -1,15 +1,21 @@
 header.header 
     nav.nav.nav--products 
-        a.nav__el(href="#") Products 
+        a.nav__el(href="/") Products 
         form.nav__search
             button.nav__search-btn 
                 svg 
-                    use(xlink:href="img/icons.svg#icon-search")
+                    use(xlink:href="/img/icons.svg#icon-search")
             input(type="text" placeholder="Search products . . . .").nav__search-input
     div.header__logo 
         a.header__logo--link(href="/") ShopMe
 
     nav.nav.nav--user
-        button.nav__el Log in
-        button.nav__el.nav__el--cta Sign up
+        //- user from auth(loggedIn)(res.locals.user)
+        if user 
+            a.nav__el.nav__el--logout Log out 
+            a.nav__el(href=`/account/${user.name}`)
+                span= user.name.split(' ')[0]
+        else
+            a.nav__el(href="/login") Log in
+            a.nav__el.nav__el--cta(href="/signup") Sign up
 

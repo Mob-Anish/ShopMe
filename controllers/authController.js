@@ -1,10 +1,10 @@
 //-------- AUTHENTICATION ---------//
-
 const User = require('./../models/userModel');
 const { promisify } = require('util'); // Util is built-in model
 const jwt = require('jsonwebtoken'); // library for authentication
 const AppError = require('./../utils/appError');
 const catchAsync = require('../utils/catchAsync');
+const Email = require('../utils/email');
 
 // TOKEN CREATION using JWT.
 const signToken = (id) => {
@@ -27,6 +27,7 @@ const createSendToken = (user, statusCode, res) => {
     httpOnly: true,
   };
 
+  // For production mode (HTTPS)
   if (process.env.NODE_ENV === 'production') cookieOptions.secure = true;
 
   res.cookie('jwt', token, cookieOptions);
@@ -53,6 +54,10 @@ exports.signup = catchAsync(async (req, res, next) => {
     passwordConfirm: req.body.passwordConfirm,
   });
 
+  // SEND EMAIL IN YOUR ADDRESS (NEW SIGNUP)
+  const url = `${req.protocol}://${req.get('host')}/account/:name`;
+  await new Email(newUser, url).sendWelcome();
+  
   createSendToken(newUser, 201, res); // jwt token
 });
 
@@ -81,8 +86,6 @@ exports.login = catchAsync(async (req, res, next) => {
 exports.protect = catchAsync(async (req, res, next) => {
   let token;
 
-  // req.headers = headers in request like Http header
-
   // 1) Getting token and check if its there
   if (
     req.headers.authorization &&
@@ -90,8 +93,13 @@ exports.protect = catchAsync(async (req, res, next) => {
   ) {
     token = req.headers.authorization.split(' ')[1];
   }
+  // Checking in browser site cookies which will be in req.cookies
+  else if (req.cookies.jwt) {
+    token = req.cookies.jwt;
+  }
+
   if (!token)
-    return next(new AppError('Your should be logged in to get access!!', 401));
+    return next(new AppError('You should be logged in to get access!!', 401));
 
   // 2) Validate token (Verification)
   // Here we use promisify to call the function and it return promise.
@@ -113,8 +121,53 @@ exports.protect = catchAsync(async (req, res, next) => {
 
   // GRANT ACCESS TO PROTECTED ROUTE
   req.user = freshUser;
+  res.locals.user = freshUser; // for pug template
   next();
 });
+
+// Only for rendered pages, no errors!
+exports.isLoggedIn = async (req, res, next) => {
+  if (req.cookies.jwt) {
+    try {
+      // 1) Verify the token
+      const decoded = await promisify(jwt.verify)(
+        req.cookies.jwt,
+        process.env.JWT_SECRET
+      );
+
+      // 2) Check if user still exists
+      const freshUser = await User.findById(decoded.id); // id is decoded payload which is userid
+
+      // If user doesnot exist in database even if token valid
+      if (!freshUser) {
+        return next();
+      }
+
+      // THERE IS A LOGGED IN USER
+      // req.locals for pug template
+      res.locals.user = freshUser;
+      return next();
+    } catch (err) {
+      return next();
+    }
+  }
+
+  next();
+};
+
+// Logged Out from Account
+// Using dummy token to logout the user
+// Note: We can't manipulate the cookies at first place
+exports.logout = (req, res) => {
+  res.cookie('jwt', 'loggedout', {
+    expires: new Date(Date.now() + 1 * 1000), // 1secs
+    httpOnly: true,
+  });
+
+  res.status(200).json({
+    status: 'success',
+  });
+};
 
 // Authorization
 // Forbidding from deleting products You have to admin

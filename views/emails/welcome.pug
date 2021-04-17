@@ -1,0 +1,17 @@
+extends baseEmail
+
+block content
+    p Hi #{firstName},
+    p Welcome to ShopMe, we're glad to have you 🎉🙏
+    p We're all a big familiy here from now on, hope you will enjoy the service from us.
+    table.btn.btn-primary(role='presentation', border='0', cellpadding='0', cellspacing='0')
+        tbody
+            tr
+                td(align='left')
+                    table(role='presentation', border='0', cellpadding='0', cellspacing='0')
+                        tbody
+                            tr
+                                td
+                                    a(href=`${url}`, target='_blank') ShopMe Account
+    p If you need any help with buying your next product, please don't hesitate to contact me!
+    p - Anish Manandhar, NodeJs Developer

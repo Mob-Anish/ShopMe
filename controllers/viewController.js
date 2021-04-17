@@ -16,7 +16,7 @@ exports.getShopMe = catchAsync(async (req, res) => {
 });
 
 // Rendering single product view
-exports.getProduct = catchAsync(async (req, res) => {
+exports.getProduct = catchAsync(async (req, res, next) => {
   // Get specific product data from collection
   const product = await Product.findOne({ slug: req.params.slug });
 
@@ -29,5 +29,19 @@ exports.getProduct = catchAsync(async (req, res) => {
   res.status(200).render('product', {
     title: `${product.name}`,
     product,
+  });
+});
+
+// Rendering login page
+exports.login = catchAsync(async (req, res) => {
+  res.status(200).render('login', {
+    title: 'Log In',
+  });
+});
+
+// Rendering account page
+exports.getAccount = catchAsync(async (req, res) => {
+  res.status(200).render('account', {
+    title: `${res.locals.user.name}`,
   });
 });

@@ -1,29 +1,53 @@
-// const nodemailer = require('nodemailer'); // medium/package for sending mail
+const nodemailer = require('nodemailer'); // medium/package for sending mail
+const pug = require('pug');
+const { htmlToText } = require('html-to-text');
 
-// const sendEmail = async (options) => {
-//   // 1) Create a transporter
-//   const transporter = nodemailer.createTransport({
-//     host: process.env.EMAIL_HOST,
-//     port: process.env.EMAIL_PORT,
-//     auth: {
-//       user: process.env.EMAIL_USERNAME,
-//       pass: process.env.EMAIL_PASSWORD,
-//     },
-//     // Activate in your gmail "less secure app" option for gmail service
-//   });
+// EMAIL CLASS FOR SENDING EMAIL
+module.exports = class Email {
+  constructor(user, url) {
+    this.to = user.email;
+    this.firstName = user.name.split(' ')[0];
+    this.url = url;
+    this.from = `ShopMe <${process.env.EMAIL_FROM}>`;
+  }
 
-//   // 2) Define the email options
-//   const emailOptions = {
-//     from: `ShopMe <${options.mailFrom}>`,
-//     to: options.email,
-//     subject: options.subject,
-//     text: options.message,
-//     //html:
-//   };
+  newTransport() {
+    // Create a transport(medium) to send email
+    return nodemailer.createTransport({
+      host: process.env.SENDBLUE_HOST,
+      port: process.env.SENDBLUE_PORT,
+      auth: {
+        user: process.env.SENDBLUE_USERNAME,
+        pass: process.env.SENDBLUE_PASSWORD,
+      },
+    });
+  }
 
-//   // 3) Actually send the email
-//   await transporter.sendMail(emailOptions);
-// };
+  // Send actual email
+  async send(template, subject) {
+    // 1) Render HTML based on a pug template.
+    const html = pug.renderFile(`${__dirname}/../views/emails/${template}.pug`, {
+      firstName: this.firstName,
+      url: this.url,
+      subject,
+    });
 
-// module.exports = sendEmail;
- 
+    // 2) Define the email options
+    const mailOptions = {
+      from: this.from,
+      to: this.to,
+      subject,
+      html,
+      text: htmlToText(html, {
+        wordwrap: 130,
+      }),
+    };
+
+    // 3) Create a tansport and send a email
+    await this.newTransport().sendMail(mailOptions);
+  }
+
+  async sendWelcome() {
+    await this.send('welcome', 'Welcome to the ShopMe Family!');
+  }
+};
