@@ -57,7 +57,7 @@ exports.signup = catchAsync(async (req, res, next) => {
   // SEND EMAIL IN YOUR ADDRESS (NEW SIGNUP)
   const url = `${req.protocol}://${req.get('host')}/account/:name`;
   await new Email(newUser, url).sendWelcome();
-  
+
   createSendToken(newUser, 201, res); // jwt token
 });
 

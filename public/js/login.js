@@ -1,5 +1,5 @@
 import axios from 'axios'; // Axios library for fetch api
-import { popAlert, hideAlert } from './alert';
+import { popAlert } from './alert';
 
 // Login function
 export const login = async (email, password) => {

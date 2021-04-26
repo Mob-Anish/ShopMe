@@ -17,7 +17,7 @@ const orderSchema = new mongoose.Schema({
   },
   price: {
     type: Number,
-    require: [true, 'Booking must have a price.'],
+    require: [true, 'Order must have a price.'],
   },
   createdAt: {
     type: Date,

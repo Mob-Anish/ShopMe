@@ -8,7 +8,11 @@ const router = express.Router();
 router.get('/', authController.isLoggedIn, viewController.getShopMe);
 
 // Product Page
-router.get('/products/:slug', authController.isLoggedIn, viewController.getProduct);
+router.get(
+  '/products/:slug',
+  authController.isLoggedIn,
+  viewController.getProduct
+);
 
 // Login Page
 router.get('/login', authController.isLoggedIn, viewController.login);

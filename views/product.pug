@@ -1,7 +1,7 @@
 extends base
 
 block content
-    main.main.main--product 
+    main.main.main--product     
         .product--container 
             .product--picture 
                 img.product__img(src=`/img/products/${product.images}`,alt=`${product.name}`, draggable="false")
@@ -11,7 +11,11 @@ block content
                     h1.product--name= product.name
                     p.product--price-box 
                         span.product--price= `Rs. ${product.price}`
-                    button.nav__el.nav__el--cta.buy--btn Buy Now 
+
+                    if user 
+                        button.nav__el.nav__el--cta.buy--btn#buy-product(data-product-id=`${product.id}`) Buy Now 
+                    else
+                        a.btn.btn--green.no-buy--btn(href='/login') Log in to Buy Now
                     .product__description 
                         .product__description--detail 
                             h1.description= `About ${product.name}` 
