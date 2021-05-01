@@ -1,3 +1,7 @@
 node_modules
 config.env
+<<<<<<< HEAD
 .cache
+=======
+.cache
+>>>>>>> 7f5de524b90df0370010776519b5f9e5ada4b6f0
