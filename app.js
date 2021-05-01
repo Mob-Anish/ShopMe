@@ -27,7 +27,7 @@ app.set('views', path.join(__dirname, 'views'));
 //------ Serving Static Files -------//
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Security HTTP Headers
+// Security HTTP Header
 //app.use(helmet());
 
 if (process.env.NODE_ENV === 'development' || 'production') {
