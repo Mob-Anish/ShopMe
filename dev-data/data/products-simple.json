@@ -1,0 +1,74 @@
+[
+  {
+    "id": 0,
+    "name": "Chuck Taylor",
+    "brand": "Converse",
+    "price": 4990,
+    "description": "The classic of all classics, the converse chuck taylor all star hi top black, is the original shoe from 1917. For years and years, punks and poets alike have coveted these shoes. Wearable for any occasion.",
+    "images": ["converse.png"]
+  },
+  {
+    "id": 1,
+    "name": "Hoodie",
+    "brand": "Hanes",
+    "price": 2000,
+    "description": "The Hanes ultimate cotton pullover hoodie is a cozy, heavyweight classic you can't live without. Our fleece is ultra-soft for comfort and warmth",
+    "images": ["White Hoodie.png"]
+  },
+  {
+    "id": 2,
+    "name": "Color pant",
+    "brand": "Levi's",
+    "price": 3998,
+    "description": "Regular-fitted chino pants. Soft, comfortable hand-feel. Tapers down to the ankle.",
+    "images": ["Color pant.png"]
+  },
+  {
+    "id": 3,
+    "name": "Bucket Hat",
+    "brand": "Adidas",
+    "price": 1830,
+    "description": "A bucket hat designed for performance, the soft, lightweight polyester and mesh build shades and ventilates to keep you cool and comfortable under the sun.",
+    "images": ["bucket-hat.png"]
+  },
+  {
+    "id": 4,
+    "name": "Surgical mask",
+    "brand": "LYMASK",
+    "price": 500,
+    "description": "Multi occasion application given this face masks can be wore anywhere you need both indoor and outdoor, 50 pcs of disposable face masks.",
+    "images": ["Surgical mask.png"]
+  },
+  {
+    "id": 5,
+    "name": "School bag",
+    "brand": "Amazon Basics",
+    "price": 2500,
+    "description": "Lightweight, durable backpack featuring adjustable padded shoulder straps and convenient side water bottle pockets,Locker loop at top.",
+    "images": ["School bag.png"]
+  },
+  {
+    "id": 6,
+    "name": "Bean bag",
+    "brand": "Sofa Sack",
+    "price": 15000,
+    "description": "The perfect bedroom accessory: simple and soft, the sofa sack individual bean bag chair is the perfect addition to every nursery, playroom, child’s bedroom, or basement.",
+    "images": ["Bean bag.png"]
+  },
+  {
+    "id": 7,
+    "name": "Ukulele",
+    "brand": "kala",
+    "price": 7999,
+    "description": "The KA-15S is well-suited for classroom use, practicing, and acoustic performance. It is the instrument of choice for schools - More people learn to play on a Kala than any other ukulele brand",
+    "images": ["ukulele.png"]
+  },
+  {
+    "id": 8,
+    "name": "Horimiya",
+    "brand": "Daisuke Hagiwara",
+    "price": 299,
+    "description": "A sweet \"aww\"-inspiring tale of school life begins!!At school, Kyouko Hori is known for being smart, attractive, and popular. On the other hand, her classmate, the boring, gloomy Izumi Miyamura tends to get painted as a \"loser fanboy.\"",
+    "images": ["Horimiya manga.jpg"]
+  }
+]
