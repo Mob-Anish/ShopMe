@@ -13,8 +13,8 @@ block content
         .user-view 
             nav.user-view__menu
                 ul.side-nav 
-                    +navItem(`/account/${user.name}`, 'Account', 'settings', true)
-                    +navItem(`/account/${user.name}/my-products`, 'My orders', 'briefcase')
+                    +navItem(`/account/${user.name}`, 'Account', 'settings')
+                    +navItem(`/account/${user.name}/my-products`, 'My orders', 'briefcase', true)
                     +navItem('#', 'Biling', 'credit-card')
 
                 - if (user.role === 'admin')
@@ -30,16 +30,10 @@ block content
             .user-view__content 
                 .user-view__form-container 
                     .user-view__heading 
-                        h2.heading-secondary.ma-bt-md Your Account  
-                        span 😎
+                        h2.heading-secondary.ma-bt-md Your Orders 
+                        span 🚫
 
-                
-                    //- User data
-                    .form-user-data
-                        .form__group 
-                            p.form__label Name
-                            .form__input= `${user.name}`
-                        .form__group.ma-bt-md
-                            p.form__label Email Address
-                            .form__input= `${user.email}`
+                    .user-view__noorder 
+                        h3.heading-tertiary There are no orders placed yet 
+                        a.btn.btn--green.btn--small(href='/') Continue Shopping
 

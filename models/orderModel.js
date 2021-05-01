@@ -6,10 +6,6 @@ const orderSchema = new mongoose.Schema({
     ref: 'Product',
     required: [true, 'Order must belong to a Product!'],
   },
-  quantity: {
-    type: Number,
-    required: [true, 'Order must have a quantity'],
-  },
   user: {
     type: mongoose.Schema.ObjectId,
     ref: 'User',
@@ -27,6 +23,16 @@ const orderSchema = new mongoose.Schema({
     type: Boolean,
     default: true,
   },
+});
+
+// Populate user and tour data
+orderSchema.pre(/^find/, function (next) {
+  this.populate('user').populate({
+    path: 'product',
+    select: 'name',
+  });
+
+  next();
 });
 
 const Order = mongoose.model('Order', orderSchema);

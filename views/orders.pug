@@ -1,0 +1,55 @@
+//- It extends the base file, use it and override its content.
+extends base
+
+//- It will create same element like a function
+mixin navItem(link, text, icon, active)
+    li(class=`${active ? 'side-nav--active' : ''}`)
+        a(href=`${link}`)
+            svg 
+                use(xlink:href=`/img/icons.svg#icon-${icon}`)
+            |   #{text}
+
+block content 
+    main.main.main--product
+        .user-view 
+            nav.user-view__menu
+                ul.side-nav 
+                    +navItem(`/account/${user.name}`, 'Account', 'settings')
+                    +navItem(`/account/${user.name}/my-products`, 'My orders', 'briefcase', true)
+                    +navItem('#', 'Biling', 'credit-card')
+
+                - if (user.role === 'admin')
+                    .admin-nav
+                        h5.admin-nav__heading Admin 
+                        ul.side-nav 
+                            +navItem('#', 'Manage products', 'map')
+                            +navItem('#', 'Manage user', 'users')
+                            +navItem('#', 'Manage orders', 'users')
+
+
+
+            .user-view__content 
+                .user-view__form-container 
+                    .user-view__heading 
+                        h2.heading-secondary.ma-bt-md Your Orders  
+                        span 😎
+
+                    //- Pug built-in array
+                    each product in products  
+
+                        each order in orders
+                            .user-view__orders
+                                //- User data
+                                .user-view__order
+                                    h3.heading-tertiary Order 
+                                        span= `#${order.id}`
+                                    .data-time= `Placed on ${order.createdAt.toString().split(' ').splice(0,5).join(' ')}`
+
+                                .user-view__order-description 
+                                    a(href=`/products/${product.slug}`)
+                                        img.order-image(src=`/img/products/${product.images}`, alt=`${product.name}`)
+
+                                    .order__product-name= `${product.name}`
+                                    .order__product-price= `Rs.${product.price}`
+                            
+

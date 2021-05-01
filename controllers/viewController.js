@@ -1,6 +1,7 @@
 const Product = require('../models/productModel');
 const AppError = require('../utils/appError');
 const catchAsync = require('../utils/catchAsync');
+const Order = require('../models/orderModel');
 
 // Rendering shopme(shopme.pug)(main page)
 exports.getShopMe = catchAsync(async (req, res) => {
@@ -43,5 +44,30 @@ exports.login = catchAsync(async (req, res) => {
 exports.getAccount = catchAsync(async (req, res) => {
   res.status(200).render('account', {
     title: `${res.locals.user.name}`,
+  });
+});
+
+// Rendering users order products page
+exports.getMyProducts = catchAsync(async (req, res, next) => {
+  // 1) Find all orders
+  const orders = await Order.find({ user: req.user.id });
+
+  // If there is no order from user.
+  if (orders == '') {
+    return res.status(200).render('noOrder', {
+      title: `NoOrder!!`,
+    });
+  }
+
+  // 2) Find products from orders db
+  const productIds = orders.map((el) => el.product);
+  // $in is used to find all the products having ids in productIds.
+  const products = await Product.find({ _id: { $in: productIds } });
+
+  // 3) Render order items
+  res.status(200).render('orders', {
+    title: 'My orders',
+    orders,
+    products,
   });
 });

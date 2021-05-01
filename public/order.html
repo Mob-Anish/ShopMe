@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,400i,700" rel="stylesheet"/>
+    <link rel="stylesheet" href="css/style.css" />
+    <title>ShopMe</title>
+</head>
+<body>
+    <!------- Header Content -------->
+    <header class="header">
+        <nav class="nav nav--products">
+          <a href="#" class="nav__el">Products</a>
+          <form class="nav__search">
+            <button class="nav__search-btn">
+              <svg>
+                <use xlink:href="img/icons.svg#icon-search"></use>
+              </svg>
+            </button>
+            <input
+              type="text"
+              placeholder="Search products . . . ."
+              class="nav__search-input"
+            />
+          </form>
+        </nav>
+
+        <div class="header__logo">
+            <a href="/shopme.html" class="header__logo--link">ShopMe</a>
+        </div>
+  
+        <nav class="nav nav--user">
+            <!--
+              <a href="#" class="nav__el">
+                <span>Anish</span>
+              </a>
+            -->
+            <button class="nav__el">Log in</button>
+            <button class="nav__el nav__el--cta">Sign up</button>
+        </nav>
+    </header>
+
+    <!----- MAIN CONTENT ------>
+    <main class="main main--product">
+        <div class="card-container">
+            <div class="card">
+              <div class="card__header">
+                <div class="card__picture">
+                  <div class="card__picture-overlay">&nbsp;</div>
+                  <img src="img/products/converse.png" alt="Tour 1" class="card__picture-img-1" />
+                </div>
+    
+                <h3 class="heading-tertirary">
+                  <span>Chuck Taylor</span>
+                </h3>
+              </div>
+    
+              <div class="card__footer">
+                <p>
+                  <span class="card__footer-value">$1,497</span>
+                </p>
+                <a href="/tour.html" class="btn btn--green btn--small">Details</a>
+              </div>
+            </div>
+        </div>
+    </main>
+
+    <!---- FOOTER CONTENT ---->
+    <footer class="footer">
+        <div class="footer__logo">
+          <img src="img/logo-green.png" alt="ShopMe Logo" />
+        </div>
+        <div class="footer__copyright">
+          <p class="footer__copyright--header">&copy; by Anish Manandhar.</p>
+          <p>This is a fictional shopping website.</p>
+        </div>
+    </footer>
+</body>
