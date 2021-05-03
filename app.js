@@ -46,7 +46,7 @@ if (process.env.NODE_ENV === 'development' || 'production') {
 
 // Body parser, reading data from body in req.body
 app.use(express.json());
-app.use(cookieParser()); // It will add cookies to request 
+app.use(cookieParser()); // It will add cookies to request
 
 // Data Sanitization against NoSQL query injection
 app.use(mongoSanitize());

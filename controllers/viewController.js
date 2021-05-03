@@ -4,7 +4,21 @@ const catchAsync = require('../utils/catchAsync');
 const Order = require('../models/orderModel');
 
 // Rendering shopme(shopme.pug)(main page)
-exports.getShopMe = catchAsync(async (req, res) => {
+exports.getShopMe = catchAsync(async (req, res, next) => {
+  if (req.query.name) {
+      // 1) Get products data from collection
+      const products = await Product.find(req.query);
+
+      if (products == '')
+        return next(new AppError('There is no product with that name', 404));
+
+      // 2) Build template
+      // 3) Render that template using product data from 1)
+      return res.status(200).render('shopme', {
+        title: 'Online Shoppingu',
+        products,
+      });
+  }
   // 1) Get products data from collection
   const products = await Product.find();
 
@@ -37,6 +51,13 @@ exports.getProduct = catchAsync(async (req, res, next) => {
 exports.login = catchAsync(async (req, res) => {
   res.status(200).render('login', {
     title: 'Log In',
+  });
+});
+
+// Rendering SignUp page
+exports.signUp = catchAsync(async (req, res) => {
+  res.status(200).render('signup', {
+    title: 'Sign Up',
   });
 });
 

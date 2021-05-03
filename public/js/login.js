@@ -16,15 +16,44 @@ export const login = async (email, password) => {
     // Login successfully
     // Redirect to home page
     if (res.data.status === 'success') {
-      // Pop meesage about login success
+      // Pop mesage about login success
       popAlert('success', 'Logged in successfully!');
+
+      // After 0.5 secs redirect to home page
+      window.setTimeout(() => {
+        location.assign('/');
+      }, 500);
+    }
+  } catch (err) {
+    popAlert('error', err.response.data.message);
+  }
+};
+
+// SignUp Function
+export const signUp = async (name, email, password, passwordConfirm) => {
+  try {
+    const res = await axios({
+      method: 'POST',
+      url: 'http://localhost:3000/api/v1/users/signup',
+      data: {
+        name,
+        email,
+        password,
+        passwordConfirm,
+      },
+    });
+
+    // SignUp success
+    // Redirect to shopme page
+    if (res.data.status === 'success') {
+      // Pop message about signup success
+      popAlert('success', 'Account created successfully');
 
       // After 1secs redirect to home page
       window.setTimeout(() => {
         location.assign('/');
       }, 500);
     }
-    console.log(res);
   } catch (err) {
     popAlert('error', err.response.data.message);
   }

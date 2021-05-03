@@ -55,7 +55,7 @@ exports.signup = catchAsync(async (req, res, next) => {
   });
 
   // SEND EMAIL IN YOUR ADDRESS (NEW SIGNUP)
-  const url = `${req.protocol}://${req.get('host')}/account/:name`;
+  const url = `${req.protocol}://${req.get('host')}/`;
   await new Email(newUser, url).sendWelcome();
 
   createSendToken(newUser, 201, res); // jwt token
@@ -71,6 +71,7 @@ exports.login = catchAsync(async (req, res, next) => {
   }
 
   // 2) Check if the user exists && password is correct
+  // password set to false so select it
   const user = await User.findOne({ email }).select('+password');
   // Here we use the instance method from usermodel
   // correctPassword is an async function

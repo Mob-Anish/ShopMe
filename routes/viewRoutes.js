@@ -18,6 +18,9 @@ router.get(
 // Login Page
 router.get('/login', authController.isLoggedIn, viewController.login);
 
+// SignUp Page
+router.get('/signup', authController.isLoggedIn, viewController.signUp);
+
 // Account Page
 router.get('/account/:name', authController.protect, viewController.getAccount);
 
