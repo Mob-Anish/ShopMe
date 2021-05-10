@@ -5,20 +5,6 @@ const Order = require('../models/orderModel');
 
 // Rendering shopme(shopme.pug)(main page)
 exports.getShopMe = catchAsync(async (req, res, next) => {
-  if (req.query.name) {
-      // 1) Get products data from collection
-      const products = await Product.find(req.query);
-
-      if (products == '')
-        return next(new AppError('There is no product with that name', 404));
-
-      // 2) Build template
-      // 3) Render that template using product data from 1)
-      return res.status(200).render('shopme', {
-        title: 'Online Shoppingu',
-        products,
-      });
-  }
   // 1) Get products data from collection
   const products = await Product.find();
 
@@ -29,6 +15,24 @@ exports.getShopMe = catchAsync(async (req, res, next) => {
     products,
   });
 });
+
+// Rendering serached product page
+exports.getSearchProduct = catchAsync(async (req, res, next) => {
+   // 1) Get products data from collection
+   const products = await Product.find(req.query);
+
+   // If there is no product
+   if (products == '')
+     return next(new AppError('There is no product with that name', 404));
+
+   // 2) Build template
+   // 3) Render that template using product data from 1)
+   return res.status(200).render('shopme', {
+     title: 'Online Shoppingu',
+     products,
+   });
+});
+
 
 // Rendering single product view
 exports.getProduct = catchAsync(async (req, res, next) => {

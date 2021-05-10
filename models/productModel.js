@@ -9,6 +9,7 @@ const productSchema = new mongoose.Schema(
       unique: true,
       trim: true,
     },
+    keyword: [String],
     slug: String,
     brand: {
       type: String,

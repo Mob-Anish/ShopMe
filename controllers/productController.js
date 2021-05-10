@@ -2,6 +2,19 @@ const Product = require('../models/productModel');
 const AppError = require('../utils/appError');
 const catchAsync = require('../utils/catchAsync');
 
+//---- Get the search keyword product ------//
+exports.getSearchProduct = catchAsync(async (req, res, next) => {
+  const products = await Product.find(req.query);
+
+  res.status(200).json({
+    status: 'success',
+    results: products.length,
+    data: {
+      products,
+    },
+  });
+});
+
 //---- Get all products ----//
 exports.getAllProducts = catchAsync(async (req, res, next) => {
   const products = await Product.find(req.query);

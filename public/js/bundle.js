@@ -6651,7 +6651,78 @@ try {
   Function("r", "regeneratorRuntime = r")(runtime);
 }
 
-},{}],"../../node_modules/axios/lib/helpers/bind.js":[function(require,module,exports) {
+},{}],"alert.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.popAlert = exports.hideAlert = void 0;
+
+// Removing alert text
+var hideAlert = function hideAlert() {
+  var el = document.querySelector('.alert'); // Remove alert text
+
+  if (el) el.parentElement.removeChild(el);
+}; // type is 'success' or 'error'
+
+
+exports.hideAlert = hideAlert;
+
+var popAlert = function popAlert(type, msg) {
+  hideAlert(); // just to make sure to hide alert at start
+
+  var markup = "<div class=\"alert alert--".concat(type, "\">").concat(msg, "</div>");
+  document.querySelector('main').insertAdjacentHTML('beforeend', markup);
+  window.setTimeout(hideAlert, 2000); // Showing alert message for 2s
+};
+
+exports.popAlert = popAlert;
+},{}],"search.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.search = void 0;
+
+var _alert = require("./alert");
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+var input = document.querySelector('.nav__search-input');
+
+var search = /*#__PURE__*/function () {
+  var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(name) {
+    return regeneratorRuntime.wrap(function _callee$(_context) {
+      while (1) {
+        switch (_context.prev = _context.next) {
+          case 0:
+            try {
+              location.assign("/search/?keyword=".concat(name));
+              input.value = '';
+              input.blur();
+            } catch (err) {
+              (0, _alert.popAlert)('error', err.response.data.message);
+            }
+
+          case 1:
+          case "end":
+            return _context.stop();
+        }
+      }
+    }, _callee);
+  }));
+
+  return function search(_x) {
+    return _ref.apply(this, arguments);
+  };
+}();
+
+exports.search = search;
+},{"./alert":"alert.js"}],"../../node_modules/axios/lib/helpers/bind.js":[function(require,module,exports) {
 'use strict';
 
 module.exports = function bind(fn, thisArg) {
@@ -8451,79 +8522,7 @@ module.exports.default = axios;
 
 },{"./utils":"../../node_modules/axios/lib/utils.js","./helpers/bind":"../../node_modules/axios/lib/helpers/bind.js","./core/Axios":"../../node_modules/axios/lib/core/Axios.js","./core/mergeConfig":"../../node_modules/axios/lib/core/mergeConfig.js","./defaults":"../../node_modules/axios/lib/defaults.js","./cancel/Cancel":"../../node_modules/axios/lib/cancel/Cancel.js","./cancel/CancelToken":"../../node_modules/axios/lib/cancel/CancelToken.js","./cancel/isCancel":"../../node_modules/axios/lib/cancel/isCancel.js","./helpers/spread":"../../node_modules/axios/lib/helpers/spread.js","./helpers/isAxiosError":"../../node_modules/axios/lib/helpers/isAxiosError.js"}],"../../node_modules/axios/index.js":[function(require,module,exports) {
 module.exports = require('./lib/axios');
-},{"./lib/axios":"../../node_modules/axios/lib/axios.js"}],"alert.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.popAlert = exports.hideAlert = void 0;
-
-// Removing alert text
-var hideAlert = function hideAlert() {
-  var el = document.querySelector('.alert'); // Remove alert text
-
-  if (el) el.parentElement.removeChild(el);
-}; // type is 'success' or 'error'
-
-
-exports.hideAlert = hideAlert;
-
-var popAlert = function popAlert(type, msg) {
-  hideAlert(); // just to make sure to hide alert at start
-
-  var markup = "<div class=\"alert alert--".concat(type, "\">").concat(msg, "</div>");
-  document.querySelector('main').insertAdjacentHTML('beforeend', markup);
-  window.setTimeout(hideAlert, 2000); // Showing alert message for 2s
-};
-
-exports.popAlert = popAlert;
-},{}],"search.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.search = void 0;
-
-var _axios = _interopRequireDefault(require("axios"));
-
-var _alert = require("./alert");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
-
-function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
-
-var search = /*#__PURE__*/function () {
-  var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(name) {
-    return regeneratorRuntime.wrap(function _callee$(_context) {
-      while (1) {
-        switch (_context.prev = _context.next) {
-          case 0:
-            try {
-              location.assign("/?name=".concat(name));
-              console.log('hi');
-            } catch (err) {
-              (0, _alert.popAlert)('error', err.response.data.message);
-            }
-
-          case 1:
-          case "end":
-            return _context.stop();
-        }
-      }
-    }, _callee);
-  }));
-
-  return function search(_x) {
-    return _ref.apply(this, arguments);
-  };
-}();
-
-exports.search = search;
-},{"axios":"../../node_modules/axios/index.js","./alert":"alert.js"}],"login.js":[function(require,module,exports) {
+},{"./lib/axios":"../../node_modules/axios/lib/axios.js"}],"login.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -9108,7 +9107,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55568" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59715" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

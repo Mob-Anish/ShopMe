@@ -2,6 +2,7 @@
   {
     "id": 0,
     "name": "Chuck Taylor",
+    "keyword": ["black", "Black","converse", "Converse", "Shoes", "Shoe", "Chuck", "Chuck taylor", "Chuck Taylor", "chuck", "taylor", "chuck taylor", "shoes", "converse shoes", "classic shoe"],
     "brand": "Converse",
     "price": 4990,
     "description": "The classic of all classics, the converse chuck taylor all star hi top black, is the original shoe from 1917. For years and years, punks and poets alike have coveted these shoes. Wearable for any occasion.",
@@ -10,6 +11,7 @@
   {
     "id": 1,
     "name": "Hoodie",
+    "keyword": ["Hoodie", "hoodie", "jacket", "winter jacket", "Winter jacket", "white", "white hoodie", "White", "White hoodie", "Cotton jacket", "cotton", "hanes", "Hanes"],
     "brand": "Hanes",
     "price": 2000,
     "description": "The Hanes ultimate cotton pullover hoodie is a cozy, heavyweight classic you can't live without. Our fleece is ultra-soft for comfort and warmth",
@@ -18,6 +20,7 @@
   {
     "id": 2,
     "name": "Color pant",
+    "keyword": ["color", "Color", "Pant", "pant", "Color pant", "color pant", "jeans", "levis", "Levi's", "Levis", "levi's", "denim", "Denim"],
     "brand": "Levi's",
     "price": 3998,
     "description": "Regular-fitted chino pants. Soft, comfortable hand-feel. Tapers down to the ankle.",
@@ -26,6 +29,7 @@
   {
     "id": 3,
     "name": "Bucket Hat",
+    "keyword": ["hat", "Hat", "Black", "black", "black hat", "Black hat", "bucket hat", "Bucket hat", "fishing hat", "Fishing hat", "adidas", "Adidas hat", "Adidas"],
     "brand": "Adidas",
     "price": 1830,
     "description": "A bucket hat designed for performance, the soft, lightweight polyester and mesh build shades and ventilates to keep you cool and comfortable under the sun.",
@@ -34,6 +38,7 @@
   {
     "id": 4,
     "name": "Surgical mask",
+    "keyword": ["mask", "Mask", "surgical mask", "Surgical", "Surgical Mask", "surgical", "Pollution mask", "pollution mask", "face mask", "Face mask", "LYMASK", "lymask"],
     "brand": "LYMASK",
     "price": 500,
     "description": "Multi occasion application given this face masks can be wore anywhere you need both indoor and outdoor, 50 pcs of disposable face masks.",
@@ -41,7 +46,8 @@
   },
   {
     "id": 5,
-    "name": "School bag",
+    "name": "School Backpack",
+    "keyword": ["orange","black","Black","school bag", "School Bag", "School bag", "bag", "Bag", "Amazon basics", "amazon basics", "Amazon Basics", "children bag", "Children Bag", "School Backpack", "Backpack", "backpack"],
     "brand": "Amazon Basics",
     "price": 2500,
     "description": "Lightweight, durable backpack featuring adjustable padded shoulder straps and convenient side water bottle pockets,Locker loop at top.",
@@ -50,6 +56,7 @@
   {
     "id": 6,
     "name": "Bean bag",
+    "keyword": ["bean", "bean bag", "Bean", "Bean bag", "Bean Bag", "sofa sack", "Sofa sack", "Sofa Sack", "bag", "Bag", "black", "Black"],
     "brand": "Sofa Sack",
     "price": 15000,
     "description": "The perfect bedroom accessory: simple and soft, the sofa sack individual bean bag chair is the perfect addition to every nursery, playroom, child’s bedroom, or basement.",
@@ -58,6 +65,7 @@
   {
     "id": 7,
     "name": "Ukulele",
+    "keyword": ["ukulele", "Ukulele", "guitar", "Guitar", "kala", "Kala", "KA-15S", "ka-15s", "Ka-15S", "Ka-15s", "acoustic", "instrument"],
     "brand": "kala",
     "price": 7999,
     "description": "The KA-15S is well-suited for classroom use, practicing, and acoustic performance. It is the instrument of choice for schools - More people learn to play on a Kala than any other ukulele brand",
@@ -66,6 +74,7 @@
   {
     "id": 8,
     "name": "Horimiya",
+    "keyword": ["manga", "horimiya manga", "Manga", "Horimiya Manga", "horimiya"],
     "brand": "Daisuke Hagiwara",
     "price": 299,
     "description": "A sweet \"aww\"-inspiring tale of school life begins!!At school, Kyouko Hori is known for being smart, attractive, and popular. On the other hand, her classmate, the boring, gloomy Izumi Miyamura tends to get painted as a \"loser fanboy.\"",

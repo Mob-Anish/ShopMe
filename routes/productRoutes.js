@@ -15,4 +15,6 @@ router
   .patch(productController.updateProduct)
   .delete(productController.deleteProduct);
 
+router.route('/search').get(productController.getSearchProduct);
+
 module.exports = router;
