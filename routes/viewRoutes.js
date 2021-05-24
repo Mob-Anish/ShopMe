@@ -9,7 +9,7 @@ const router = express.Router();
 router.get('/', orderController.createOrder, authController.isLoggedIn, viewController.getShopMe);
 
 // Searched product page
-router.get('/search', orderController.createOrder, authController.isLoggedIn, viewController.getSearchProduct);
+router.get('/search', authController.isLoggedIn, viewController.getSearchProduct);
 
 // Product Page
 router.get(

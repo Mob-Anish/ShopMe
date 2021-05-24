@@ -29,7 +29,6 @@ const orderSchema = new mongoose.Schema({
 orderSchema.pre(/^find/, function (next) {
   this.populate('user').populate({
     path: 'product',
-    select: 'name',
   });
 
   next();

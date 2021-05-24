@@ -8675,7 +8675,7 @@ var logout = /*#__PURE__*/function () {
             if (res.data.status === 'success') {
               // Hack for location.reload(true);
               window.setTimeout(function () {
-                location.reload();
+                location.assign('/');
               }, 2000);
             }
 
@@ -9041,7 +9041,7 @@ var _stripe = require("./stripe");
 var searchForm = document.querySelector('.nav__search');
 var loginForm = document.querySelector('.form--login');
 var signupForm = document.querySelector('.signup-form');
-var logoutBtn = document.querySelector('.nav__el--logout');
+var logoutBtn = document.querySelector('.btn--logout');
 var buyBtn = document.querySelector('#buy-product'); // Search Form Event
 
 if (searchForm) searchForm.addEventListener('submit', function (e) {
@@ -9107,7 +9107,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59715" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60784" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

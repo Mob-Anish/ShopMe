@@ -620,17 +620,18 @@ body {
 .product--container {
   display: grid;
   margin: 0 auto;
+  align-items: center;
+  justify-content: center;
   grid-template-columns: repeat(2, 1fr);
-  grid-gap: 7rem;
-  max-width: 150rem;
+  max-width: 123rem;
 }
 
 .product--picture {
-  padding: 5rem;
+  padding: 7rem;
 }
 
 .product__img {
-  height: 45rem;
+  height: 43rem;
 }
 
 .product--detail {
@@ -970,8 +971,7 @@ body {
 }
 
 .user-view__order-description a img {
-  width: 16rem;
-  height: 12rem;
+  width: 12rem;
 }
 
 .user-view__order-description .order__product-name {

@@ -7,7 +7,7 @@ import { orderProduct } from './stripe';
 const searchForm = document.querySelector('.nav__search');
 const loginForm = document.querySelector('.form--login');
 const signupForm = document.querySelector('.signup-form');
-const logoutBtn = document.querySelector('.nav__el--logout');
+const logoutBtn = document.querySelector('.btn--logout');
 const buyBtn = document.querySelector('#buy-product');
 
 // Search Form Event

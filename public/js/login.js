@@ -70,7 +70,7 @@ export const logout = async () => {
     if (res.data.status === 'success') {
       // Hack for location.reload(true);
       window.setTimeout(() => {
-        location.reload();
+        location.assign('/');
       }, 2000);
     }
   } catch (err) {

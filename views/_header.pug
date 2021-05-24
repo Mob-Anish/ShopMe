@@ -12,7 +12,6 @@ header.header
     nav.nav.nav--user
         //- user from auth(loggedIn)(res.locals.user)
         if user 
-            a.nav__el.nav__el--logout Log out 
             a.nav__el(href=`/account/${user.name}`)
                 span= user.name.split(' ')[0]
         else

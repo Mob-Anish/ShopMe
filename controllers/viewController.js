@@ -18,21 +18,20 @@ exports.getShopMe = catchAsync(async (req, res, next) => {
 
 // Rendering serached product page
 exports.getSearchProduct = catchAsync(async (req, res, next) => {
-   // 1) Get products data from collection
-   const products = await Product.find(req.query);
+  // 1) Get products data from collection
+  const products = await Product.find(req.query);
 
-   // If there is no product
-   if (products == '')
-     return next(new AppError('There is no product with that name', 404));
+  // If there is no product
+  if (products == '')
+    return next(new AppError('There is no product with that name', 404));
 
-   // 2) Build template
-   // 3) Render that template using product data from 1)
-   return res.status(200).render('shopme', {
-     title: 'Online Shoppingu',
-     products,
-   });
+  // 2) Build template
+  // 3) Render that template using product data from 1)
+  return res.status(200).render('shopme', {
+    title: 'Online Shoppingu',
+    products,
+  });
 });
-
 
 // Rendering single product view
 exports.getProduct = catchAsync(async (req, res, next) => {
@@ -76,6 +75,9 @@ exports.getAccount = catchAsync(async (req, res) => {
 exports.getMyProducts = catchAsync(async (req, res, next) => {
   // 1) Find all orders
   const orders = await Order.find({ user: req.user.id });
+  console.log(orders);
+
+  // Note: Due to populate of data in order model we can access data of product in orderpage.
 
   // If there is no order from user.
   if (orders == '') {
@@ -84,15 +86,9 @@ exports.getMyProducts = catchAsync(async (req, res, next) => {
     });
   }
 
-  // 2) Find products from orders db
-  const productIds = orders.map((el) => el.product);
-  // $in is used to find all the products having ids in productIds.
-  const products = await Product.find({ _id: { $in: productIds } });
-
   // 3) Render order items
   res.status(200).render('orders', {
     title: 'My orders',
     orders,
-    products,
   });
 });
