@@ -28,6 +28,6 @@ router.get('/signup', authController.isLoggedIn, viewController.signUp);
 router.get('/account/:name', authController.protect, viewController.getAccount);
 
 // Order product page
-router.get('/account/:name/my-products', authController.protect, viewController.getMyProducts);
+router.get('/account/:name/my-orders', authController.protect, viewController.getMyProducts);
 
 module.exports = router;

@@ -75,7 +75,6 @@ exports.getAccount = catchAsync(async (req, res) => {
 exports.getMyProducts = catchAsync(async (req, res, next) => {
   // 1) Find all orders
   const orders = await Order.find({ user: req.user.id });
-  console.log(orders);
 
   // Note: Due to populate of data in order model we can access data of product in orderpage.
 

@@ -1,0 +1,17 @@
+extends baseEmail 
+
+block content
+    p Hey #{firstName},
+    p Your order has been placed. You will be updated with another email after your item(s) has been shipped.
+    p You can check your orders from your account.
+    table.btn.btn-primary(role='presentation', border='0', cellpadding='0', cellspacing='0')
+        tbody
+            tr
+                td(align='left')
+                    table(role='presentation', border='0', cellpadding='0', cellspacing='0')
+                        tbody
+                            tr
+                                td
+                                    a(href=`${url}`, target='_blank') Your Order
+    p If you need any help with buying your next product, please don't hesitate to contact us!
+    p - ShopMe Team

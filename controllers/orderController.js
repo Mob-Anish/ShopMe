@@ -1,8 +1,10 @@
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY); // Stripe package
 const Product = require('../models/productModel');
+const User = require('../models/userModel');
 const AppError = require('../utils/appError');
 const catchAsync = require('../utils/catchAsync');
 const Order = require('../models/orderModel');
+const Email = require('../utils/email');
 
 // Integrating checkout session(stripe api)
 exports.getCheckoutSession = catchAsync(async (req, res, next) => {
@@ -47,6 +49,13 @@ exports.createOrder = catchAsync(async (req, res, next) => {
 
   // Create new order in DB
   await Order.create({ product, user, price });
+
+  const users = await User.find({ _id: user });
+  console.log(users);
+
+  // SEND EMAIL IN YOUR ADDRESS (After order)
+   const url = `http://localhost:3000/account/${users[0].name}/my-orders`;
+   await new Email(users, url).sendOrderResponse();
 
   // Redirect to home page.
   res.redirect(req.originalUrl.split('?')[0]);

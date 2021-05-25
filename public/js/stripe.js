@@ -11,7 +11,6 @@ export const orderProduct = async (productId) => {
     const session = await axios(
       `http://localhost:3000/api/v1/orders/checkout-session/${productId}`
     );
-    console.log(session);
 
     // 2)  Create checkout form and charge through card.
     await stripe.redirectToCheckout({ sessionId: session.data.session.id });
