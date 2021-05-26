@@ -13,15 +13,27 @@ export const login = async (email, password) => {
       },
     });
 
+    console.log(res);
+
     // Login successfully
     // Redirect to home page
-    if (res.data.status === 'success') {
+    if (res.data.status === 'success' && res.data.data.user.role === 'user') {
       // Pop mesage about login success
       popAlert('success', 'Logged in successfully!');
 
       // After 0.5 secs redirect to home page
       window.setTimeout(() => {
         location.assign('/');
+      }, 500);
+    }
+
+    // Admin Page
+    if (res.data.status === 'success' && res.data.data.user.role === 'admin') {
+      popAlert('success', 'Logged in successfully!');
+
+      // redirect to adminPanel
+      window.setTimeout(() => {
+        location.assign('/admin/dashboard');
       }, 500);
     }
   } catch (err) {

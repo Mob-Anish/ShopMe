@@ -8561,32 +8561,41 @@ var login = /*#__PURE__*/function () {
 
           case 3:
             res = _context.sent;
-
-            // Login successfully
+            console.log(res); // Login successfully
             // Redirect to home page
-            if (res.data.status === 'success') {
+
+            if (res.data.status === 'success' && res.data.data.user.role === 'user') {
               // Pop mesage about login success
               (0, _alert.popAlert)('success', 'Logged in successfully!'); // After 0.5 secs redirect to home page
 
               window.setTimeout(function () {
                 location.assign('/');
               }, 500);
+            } // Admin Page
+
+
+            if (res.data.status === 'success' && res.data.data.user.role === 'admin') {
+              (0, _alert.popAlert)('success', 'Logged in successfully!'); // redirect to adminPanel
+
+              window.setTimeout(function () {
+                location.assign('/admin/dashboard');
+              }, 500);
             }
 
-            _context.next = 10;
+            _context.next = 12;
             break;
 
-          case 7:
-            _context.prev = 7;
+          case 9:
+            _context.prev = 9;
             _context.t0 = _context["catch"](0);
             (0, _alert.popAlert)('error', _context.t0.response.data.message);
 
-          case 10:
+          case 12:
           case "end":
             return _context.stop();
         }
       }
-    }, _callee, null, [[0, 7]]);
+    }, _callee, null, [[0, 9]]);
   }));
 
   return function login(_x, _x2) {
@@ -8735,29 +8744,27 @@ var orderProduct = /*#__PURE__*/function () {
 
           case 3:
             session = _context.sent;
-            console.log(session); // 2)  Create checkout form and charge through card.
-
-            _context.next = 7;
+            _context.next = 6;
             return stripe.redirectToCheckout({
               sessionId: session.data.session.id
             });
 
-          case 7:
-            _context.next = 13;
+          case 6:
+            _context.next = 12;
             break;
 
-          case 9:
-            _context.prev = 9;
+          case 8:
+            _context.prev = 8;
             _context.t0 = _context["catch"](0);
             console.log(_context.t0);
             (0, _alert.popAlert)('error', _context.t0);
 
-          case 13:
+          case 12:
           case "end":
             return _context.stop();
         }
       }
-    }, _callee, null, [[0, 9]]);
+    }, _callee, null, [[0, 8]]);
   }));
 
   return function orderProduct(_x) {
@@ -9107,7 +9114,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60784" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59157" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

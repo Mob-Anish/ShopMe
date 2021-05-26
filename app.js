@@ -13,6 +13,7 @@ const productRouter = require('./routes/productRoutes');
 const userRouter = require('./routes/userRoutes');
 const orderRouter = require('./routes/orderRoutes');
 const viewRouter = require('./routes/viewRoutes');
+const adminRouter = require('./routes/adminRoutes');
 const AppError = require('./utils/appError');
 const globalErrorController = require('./controllers/errorController');
 
@@ -20,7 +21,10 @@ const app = express();
 
 // Setting pug for view template
 app.set('view engine', 'pug');
-app.set('views', path.join(__dirname, 'views'));
+app.set('views', [
+  path.join(__dirname, 'views'),
+  path.join(__dirname, '/views/admin'),
+]);
 
 //------------ GLOBAL MIDDLEWARE ---------//
 
@@ -65,6 +69,7 @@ app.use('/', viewRouter);
 app.use('/api/v1/products', productRouter);
 app.use('/api/v1/users', userRouter);
 app.use('/api/v1/orders', orderRouter);
+app.use('/admin', adminRouter); // For admin only
 
 // Handling unhandled request
 // Handling req outside the app.
