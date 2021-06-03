@@ -28,7 +28,7 @@ exports.getAllProducts = catchAsync(async (req, res, next) => {
   });
 });
 
-//------ Get specific tour from database ------//
+//------ Get specific product from database ------//
 // req.params means the parameter in url which we can define like '/:id' in routes and we can get the id. (req.params.id)
 exports.getProduct = catchAsync(async (req, res, next) => {
   const product = await Product.findById(req.params.id);

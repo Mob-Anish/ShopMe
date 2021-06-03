@@ -117,7 +117,6 @@ body {
   font-weight: 400;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
-  /*Add later when we use this for the button in form*/
   border: none;
   cursor: pointer;
 }
@@ -138,7 +137,6 @@ body {
 
 .btn:focus {
   outline: none;
-  background-color: #2e864b;
 }
 
 .btn--white {
@@ -902,7 +900,7 @@ body {
 .side-nav a:hover,
 .side-nav a:active {
   -webkit-transform: translateX(3px);
-  transform: translateX(3px);
+  transform: translateX(3px); 
 }
 .side-nav svg {
   height: 1.9rem;

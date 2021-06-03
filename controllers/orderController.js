@@ -60,3 +60,35 @@ exports.createOrder = catchAsync(async (req, res, next) => {
   // Redirect to home page.
   res.redirect(req.originalUrl.split('?')[0]);
 });
+
+//---- Get all orders ----//
+exports.getAllOrders = catchAsync(async (req, res, next) => {
+  const orders = await Order.find(req.query);
+
+  res.status(200).json({
+    status: 'success',
+    results: orders.length,
+    data: {
+      orders,
+    },
+  });
+});
+
+//------ Get specific order from database ------//
+// req.params means the parameter in url which we can define like '/:id' in routes and we can get the id. (req.params.id)
+exports.getOrder = catchAsync(async (req, res, next) => {
+  const order = await Order.findById(req.params.id);
+  // Tour.findOne({ _id: req.params.id });
+
+  // Creating Error if there is null data
+  if (!order) {
+    return next(new AppError('No order found with that ID', 404));
+  }
+
+  res.status(200).json({
+    status: 'success',
+    data: {
+      order,
+    },
+  });
+});

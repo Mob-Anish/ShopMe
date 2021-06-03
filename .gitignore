@@ -8,3 +8,8 @@ config.env
 views/admin/
 controllers/adminController.js
 routes/adminRoutes.js
+public/css/admin.css
+public/js/admin.js
+public/js/adminBundle.js
+public/js/adminBundle.js.map
+public/js/bundle.js.map

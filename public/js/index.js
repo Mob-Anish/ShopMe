@@ -12,7 +12,7 @@ const buyBtn = document.querySelector('#buy-product');
 
 // Search Form Event
 if (searchForm)
-  searchForm.addEventListener('submit', e => {
+  searchForm.addEventListener('submit', (e) => {
     e.preventDefault();
     console.log('er');
     const name = document.querySelector('.nav__search-input').value;

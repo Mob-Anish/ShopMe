@@ -24,6 +24,7 @@ app.set('view engine', 'pug');
 app.set('views', [
   path.join(__dirname, 'views'),
   path.join(__dirname, '/views/admin'),
+  path.join(__dirname, '/views/admin/sidebar'),
 ]);
 
 //------------ GLOBAL MIDDLEWARE ---------//

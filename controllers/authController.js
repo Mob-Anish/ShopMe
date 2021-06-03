@@ -171,7 +171,7 @@ exports.logout = (req, res) => {
 };
 
 // Authorization
-// You have to admin
+// You have to be admin
 exports.restrictTo = (...roles) => {
   return (req, res, next) => {
     // roles ['admin']
