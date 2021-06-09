@@ -17,6 +17,7 @@ mongoose
     // Deprecation warnings
     useNewUrlParser: true,
     useCreateIndex: true,
+    useFindAndModify: false,
     useUnifiedTopology: true,
   })
   .then(() => {
@@ -26,11 +27,8 @@ mongoose
     console.log('DB connection failed');
   });
 
-
 //----- Server is started on port -------//
 const port = process.env.PORT || 3000;
 const server = app.listen(port, () => {
-    console.log(`Running on port:${port}`);
+  console.log(`Running on port:${port}`);
 });
-
-

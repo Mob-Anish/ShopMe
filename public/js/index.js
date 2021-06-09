@@ -14,7 +14,6 @@ const buyBtn = document.querySelector('#buy-product');
 if (searchForm)
   searchForm.addEventListener('submit', (e) => {
     e.preventDefault();
-    console.log('er');
     const name = document.querySelector('.nav__search-input').value;
     search(name);
   });

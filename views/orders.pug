@@ -18,16 +18,6 @@ block content
                     +navItem(`/account/${user.name}/my-products`, 'My orders', 'briefcase', true)
                     +navItem('#', 'Biling', 'credit-card')
 
-                - if (user.role === 'admin')
-                    .admin-nav
-                        h5.admin-nav__heading Admin 
-                        ul.side-nav 
-                            +navItem('#', 'Manage products', 'map')
-                            +navItem('#', 'Manage user', 'users')
-                            +navItem('#', 'Manage orders', 'users')
-
-
-
             .user-view__content 
                 .user-view__form-container 
                     .user-view__heading 

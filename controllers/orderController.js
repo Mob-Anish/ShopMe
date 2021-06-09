@@ -50,11 +50,11 @@ exports.createOrder = catchAsync(async (req, res, next) => {
   // Create new order in DB
   await Order.create({ product, user, price });
 
-  const users = await User.find({ _id: user });
+  const users = await User.findById({ _id: user });
   console.log(users);
 
   // SEND EMAIL IN YOUR ADDRESS (After order)
-   const url = `http://localhost:3000/account/${users[0].name}/my-orders`;
+   const url = `http://localhost:3000/account/${users.name}/my-orders`;
    await new Email(users, url).sendOrderResponse();
 
   // Redirect to home page.

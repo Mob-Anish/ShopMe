@@ -5,8 +5,8 @@ const { htmlToText } = require('html-to-text');
 // EMAIL CLASS FOR SENDING EMAIL
 module.exports = class Email {
   constructor(user, url) {
-    this.to = user[0].email;
-    this.firstName = user[0].name.split(' ')[0];
+    this.to = user.email;
+    this.firstName = user.name.split(' ')[0];
     this.url = url;
     this.from = `ShopMe <${process.env.EMAIL_FROM}>`;
   }

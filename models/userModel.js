@@ -55,6 +55,20 @@ userSchema.pre('save', async function (next) {
   next();
 });
 
+// Securing Password
+userSchema.pre('findOneAndUpdate', async function (next) {
+  // If the password is not modified
+  if (!this._update.password) return next();
+
+  // Hash the password with cost of 12 or salt rounds
+  this._update.password = await bcrypt.hash(this._update.password, 12);
+
+  // Deleting passwordConfirm field
+  this.passwordConfirm = undefined;
+
+  next();
+});
+
 // Checking password with user password
 // Here we use instance methods which can be accessible to all docs of userSchema i.e. methods
 userSchema.methods.correctPassword = async function (
