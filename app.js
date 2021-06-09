@@ -27,6 +27,7 @@ app.set('views', [
   path.join(__dirname, '/views/admin/product'),
   path.join(__dirname, '/views/admin/user'),
   path.join(__dirname, '/views/admin/sidebar'),
+  path.join(__dirname, '/views/admin/order'),
 ]);
 
 //------------ GLOBAL MIDDLEWARE ---------//

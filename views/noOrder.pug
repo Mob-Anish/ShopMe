@@ -15,7 +15,6 @@ block content
                 ul.side-nav 
                     +navItem(`/account/${user.name}`, 'Account', 'settings')
                     +navItem(`/account/${user.name}/my-products`, 'My orders', 'briefcase', true)
-                    +navItem('#', 'Biling', 'credit-card')
 
                 - if (user.role === 'admin')
                     .admin-nav

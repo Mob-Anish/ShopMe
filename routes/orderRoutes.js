@@ -8,15 +8,17 @@ router.use(authController.protect);
 
 router.get('/checkout-session/:productId', orderController.getCheckoutSession);
 
-// router
-//   .route('/')
-//   .get(authController.restrictTo('admin'), orderController.getAllOrder)
-//   .post(orderController.createOrder);
-
-// router
-//   .route('/:id')
-//   .get(orderController.getOrder)
-//   .patch(orderController.updateOrder)
-//   .delete(orderController.deleteOrder);
+router
+  .route('/:id')
+  .get(
+    authController.protect,
+    authController.restrictTo('admin'),
+    orderController.getOrder
+  )
+  .delete(
+    authController.protect,
+    authController.restrictTo('admin'),
+    orderController.deleteOrder
+  );
 
 module.exports = router;

@@ -54,8 +54,8 @@ exports.createOrder = catchAsync(async (req, res, next) => {
   console.log(users);
 
   // SEND EMAIL IN YOUR ADDRESS (After order)
-   const url = `http://localhost:3000/account/${users.name}/my-orders`;
-   await new Email(users, url).sendOrderResponse();
+  const url = `http://localhost:3000/account/${users.name}/my-orders`;
+  await new Email(users, url).sendOrderResponse();
 
   // Redirect to home page.
   res.redirect(req.originalUrl.split('?')[0]);
@@ -90,5 +90,19 @@ exports.getOrder = catchAsync(async (req, res, next) => {
     data: {
       order,
     },
+  });
+});
+
+// Deleting order from database
+exports.deleteOrder = catchAsync(async (req, res, next) => {
+  const order = await Order.findByIdAndDelete(req.params.id);
+
+  if (!order) {
+    return next(new AppError('No order found with that ID', 404));
+  }
+
+  res.status(200).json({
+    status: 'success',
+    data: null,
   });
 });

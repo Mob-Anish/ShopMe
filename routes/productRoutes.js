@@ -6,14 +6,34 @@ const router = express.Router();
 
 router
   .route('/')
-  .get(productController.getAllProducts)
-  .post(productController.createProduct);
+  .get(
+    authController.protect,
+    authController.restrictTo('admin'),
+    productController.getAllProducts
+  )
+  .post(
+    authController.protect,
+    authController.restrictTo('admin'),
+    productController.createProduct
+  );
 
 router
   .route('/:id')
-  .get(productController.getProduct)
-  .patch(productController.updateProduct)
-  .delete(productController.deleteProduct);
+  .get(
+    authController.protect,
+    authController.restrictTo('admin'),
+    productController.getProduct
+  )
+  .patch(
+    authController.protect,
+    authController.restrictTo('admin'),
+    productController.updateProduct
+  )
+  .delete(
+    authController.protect,
+    authController.restrictTo('admin'),
+    productController.deleteProduct
+  );
 
 router.route('/search').get(productController.getSearchProduct);
 
