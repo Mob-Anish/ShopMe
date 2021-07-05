@@ -551,7 +551,7 @@ body {
   transform-origin: center;
   transition: transform 0.25s ease-in-out;
 }
-
+  
 .card__footer {
   background-color: #f0e6e6;
   padding: 2.5rem 3rem;
