@@ -101,7 +101,9 @@ exports.protect = catchAsync(async (req, res, next) => {
   }
 
   if (!token)
-    return next(new AppError('You should be logged in to get access 🚫🚫', 401));
+    return next(
+      new AppError('You should be logged in to get access 🚫🚫', 401)
+    );
 
   // 2) Validate token (Verification)
   // Here we use promisify to call the function and it return promise.
@@ -178,7 +180,10 @@ exports.restrictTo = (...roles) => {
     // roles ['admin']
     if (!roles.includes(req.user.role)) {
       return next(
-        new AppError('You dont have the permission of administrator to perform the action 🚫🚫', 403)
+        new AppError(
+          'You dont have the permission of administrator to perform the action 🚫🚫',
+          403
+        )
       );
     }
 

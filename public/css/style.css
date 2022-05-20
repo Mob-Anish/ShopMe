@@ -261,13 +261,14 @@ body {
 
 .footer {
   background-color: #f7f7f7;
-  height: 14rem;
-  padding: 2rem 4rem 0 4rem;
-  font-size: 1.4rem;
+  height: 12rem;
+  padding: 2rem 4rem 2rem 4rem;
+  font-size: 1.6rem;
   display: grid;
-  grid-template-columns: 1fr;
-  grid-row-gap: 1.25rem;
-  justify-items: center;
+  grid-template-columns: auto auto;
+  grid-column-gap: 6rem;
+  justify-content: center;
+  align-items: center;
   -webkit-box-pack: justify;
   -ms-flex-pack: justify;
 }
@@ -296,6 +297,7 @@ body {
 
 .footer__copyright {
   color: #999;
+  margin-top: 1.5rem;
 }
 .footer__copyright--header {
   text-align: center;
@@ -611,7 +613,7 @@ body {
 
 .main--product {
   padding-bottom: 10rem;
-  min-height: 78vh;
+  min-height: 80vh;
 }
 
 .product--container {

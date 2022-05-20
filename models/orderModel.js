@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+  const mongoose = require('mongoose');
 
 const orderSchema = new mongoose.Schema({
   product: {
@@ -14,7 +14,7 @@ const orderSchema = new mongoose.Schema({
   price: {
     type: Number,
     require: [true, 'Order must have a price.'],
-  },
+  },  
   createdAt: {
     type: Date,
     default: Date.now(),

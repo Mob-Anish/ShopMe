@@ -2,6 +2,7 @@
 const sendErrorDev = (err, req, res) => {
   // A) API'S ERROR
   if (req.originalUrl.startsWith('/api')) {
+    console.error('ERROR 💥', err);
     return res.status(err.statusCode).json({
       status: err.status,
       error: err,

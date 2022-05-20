@@ -14,10 +14,16 @@ module.exports = class Email {
   newTransport() {
     // Create a transport(medium) to send email
     return nodemailer.createTransport({
-      service: 'SendGrid',
+      // service: 'SendGrid',
+      // auth: {
+      //   user: process.env.SENDGRID_USERNAME,
+      //   pass: process.env.SENDGRID_PASSWORD,
+      // },
+      host: process.env.EMAIL_HOST,
+      port: process.env.EMAIL_PORT,
       auth: {
-        user: process.env.SENDGRID_USERNAME,
-        pass: process.env.SENDGRID_PASSWORD,
+        user: process.env.EMAIL_USERNAME,
+        pass: process.env.EMAIL_PASSWORD,
       },
     });
   }
@@ -54,6 +60,6 @@ module.exports = class Email {
   }
 
   async sendOrderResponse() {
-    await this.send('order', 'Thank you for ordering 👐')
+    await this.send('order', 'Thank you for ordering 👐');
   }
 };
