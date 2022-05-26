@@ -1,0 +1,40 @@
+extends adminBase
+
+block content 
+    include sidebar/_productSidebar.pug
+
+    section.product-section 
+        .header 
+            h1 Products 
+
+        .product--new 
+            a(href="/admin/products/new-product")
+                button.btn.btn--new New Product 
+
+
+        .container.product-container 
+            .products 
+                .products-keys 
+                    .keys.product-id ID 
+                    .keys.product-name Name 
+                    .keys.product-description Description 
+                    .keys.product-price Price 
+                    .keys.product-image Image 
+                    .keys.product-action_value Action 
+
+                
+                each product,index in products 
+                    .products-values 
+                        .values.product-id_value= `${index + 1}`
+                        .values.product-name_value= `${product.name}`
+                        .values.product-description_value= `${product.description}`
+                        .values.product-price_value= `${product.price}`
+                        .values.product-image_value= `${product.images}`
+                        .values.product-action_value
+                            a(href=`/admin/products/update-product/${product.id}`)
+                                svg 
+                                    use(xlink:href='/img/icons.svg#icon-edit') 
+
+                            a(href=`/admin/products/delete-product/${product.id}`)
+                                svg
+                                    use(xlink:href='/img/icons.svg#icon-delete') 

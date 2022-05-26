@@ -1,0 +1,37 @@
+extends adminBase
+
+block content 
+    include sidebar/_userSidebar.pug
+
+    section.user-section 
+        .header 
+            h1 Users    
+
+        .user--new 
+            a(href="/admin/users/new-user")
+                button.btn.btn--new New User 
+
+
+        .container.user-container 
+            .users 
+                .users-keys 
+                    .keys.user-id ID 
+                    .keys.user-name Name 
+                    .keys.user-email Email 
+                    .keys.user-price Password 
+                    .keys.user-action_value Action 
+
+                each user,index in users 
+                    .users-values 
+                        .values.user-id_value= `${index + 1}`
+                        .values.user-name_value= `${user.name}`
+                        .values.user-email_value= `${user.email}`
+                        .values.user-password_value= `***********`
+                        .values.user-action_value
+                            a(href=`/admin/users/update-user/${user.id}`)
+                                svg 
+                                    use(xlink:href='/img/icons.svg#icon-edit') 
+                            
+                            a(href=`/admin/users/delete-user/${user.id}`)
+                                svg.btn--delete(data-user-id=`${user.id}`)
+                                    use(xlink:href='/img/icons.svg#icon-delete') 

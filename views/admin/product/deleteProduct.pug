@@ -1,0 +1,39 @@
+extends ../adminBase
+
+block content 
+    include ../sidebar/_productSidebar.pug
+
+    section.delete--product_container 
+        .delete--product_header
+            .back--btn 
+                a(href="/admin/products") 
+                    svg 
+                        use(xlink:href='/img/icons.svg#icon-skip-back')
+                    span Back 
+            
+            .header 
+                h1 Delete Product 
+
+
+        form.form.delete--product__form
+            .form-delete.product__name
+                label Name 
+                input.delete--product_name(type="text",value=`${productData.name}`,placeholder="Product Name",onfocus="this.placeholder= ''",onblur="this.placeholder= 'Product Name'",required)
+            .form-delete.product__keyword
+                label Keyword 
+                input.delete--product_keyword(type="text",value=`${productData.keyword}`,placeholder="Product Keyword",onfocus="this.placeholder= ''",onblur="this.placeholder= 'Product Keyword'",required)
+            .form-delete.product__brand
+                label Brand 
+                input.delete--product_brand(type="text",value=`${productData.brand}`,placeholder="Product Brand",onfocus="this.placeholder= ''",onblur="this.placeholder= 'Product Brand'",required)
+            .form-delete.product__description
+                label Description 
+                textarea.delete--product_description(cols="40", rows="10",placeholder="Product Description",onfocus="this.placeholder= ''",onblur="this.placeholder= 'Product Description'",required)=`${productData.description}`
+            .form-delete.product__price
+                label Price 
+                input.delete--product_price(type="text",value=`${productData.price}`,placeholder="Product Price",onfocus="this.placeholder= ''",onblur="this.placeholder= 'Product Price'",required)
+            .form-delete.product__image
+                label Image 
+                input.delete--product_image(type="text",value=`${productData.images}`,placeholder="Product Image",onfocus="this.placeholder= ''",onblur="this.placeholder= 'Product Image'",required)
+
+            .delete--product 
+                button.btn.btn--delete(data-product-id=`${productData.id}`) Delete

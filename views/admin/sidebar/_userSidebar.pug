@@ -1,0 +1,33 @@
+//- It will create same element like a function
+mixin navItem(link, text, icon, active)
+    li(class=`${active ? 'side-nav__active' : ''}`)
+        a(href=`${link}`)
+            svg 
+                use(xlink:href=`/img/icons.svg#icon-${icon}`)
+            span #{text}
+
+input.menu__checkbox#sideview-crawl(type="checkbox")
+.side-view 
+    nav.admin-view__menu 
+        .admin-view__header 
+            h3.company-name 
+                span ShopMe 
+            .menu-icon 
+                label.menu-bar(for="sideview-crawl")
+                    svg 
+                        use(xlink:href='/img/icons.svg#icon-menu')
+
+        .user-profile 
+            img(src="/img/users/user.png",alt="admin-picture")
+            h3.admin-name 
+                span #{user.name}
+
+        ul.side-nav 
+            +navItem(`/admin/dashboard`, 'Home', 'home')
+            +navItem(`/admin/products`, 'Products', 'package')
+            +navItem('/admin/users', 'Users', 'user', true)
+            +navItem('/admin/orders', 'Orders', 'briefcase')
+            +navItem('/admin/account', 'Account', 'settings')
+
+    footer.footer 
+        p &copy; ShopMe Corporation by Anish Manandhar

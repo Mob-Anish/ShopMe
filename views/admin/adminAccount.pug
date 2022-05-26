@@ -1,0 +1,19 @@
+extends adminBase
+
+block content 
+    include sidebar/_accountSidebar.pug
+
+    section.account-section 
+        .header 
+            h1 Account 
+        
+        .account-info 
+            .form-account.info-name 
+                label Name 
+                .account-field.name-field= `${user.name}` 
+            .form-account.info-email 
+                label Email 
+                .account-field.email-field= `${user.email}` 
+            .button-account 
+                button.btn.btn--green.btn--admin Logout 
+                

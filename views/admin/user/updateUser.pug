@@ -1,0 +1,30 @@
+extends ../adminBase
+
+block content 
+    include ../sidebar/_userSidebar.pug
+
+    section.update--user_container 
+        .update--user_header
+            .back--btn 
+                a(href="/admin/users") 
+                    svg 
+                        use(xlink:href='/img/icons.svg#icon-skip-back')
+                    span Back 
+            
+            .header 
+                h1 Update User 
+
+
+        form.form.update--user__form
+            .form-update.user__name
+                label(for="update--user_name") Name 
+                input.update--user_name(type="text",value=`${userData.name}`,placeholder="User Name",onfocus="this.placeholder= ''",onblur="this.placeholder= 'User Name'",required)
+            .form-update.user__email
+                label Email 
+                input.update--user_email(type="text",value=`${userData.email}`,placeholder="User email",onfocus="this.placeholder= ''",onblur="this.placeholder= ''",required)
+            .form-update.user__password
+                label Password 
+                input.update--user_password(type="password",placeholder="********",onfocus="this.placeholder= ''",onblur="this.placeholder= '********'", minlength='8',required)
+
+            .update--user
+                button.btn.btn--update(data-user-id=`${userData.id}`) Update

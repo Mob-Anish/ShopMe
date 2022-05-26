@@ -1,0 +1,30 @@
+extends ../adminBase
+
+block content 
+    include ../sidebar/_orderSidebar.pug
+
+    section.delete--order_container 
+        .delete--order_header
+            .back--btn 
+                a(href="/admin/orders") 
+                    svg 
+                        use(xlink:href='/img/icons.svg#icon-skip-back')
+                    span Back 
+            
+            .header 
+                h1 Delete order 
+
+
+        form.form.delete--order__form
+            .form-delete.product__name
+                label Product Name 
+                input.delete--product_name(type="text",value=`${order.product.name}`,placeholder="Product Name",onfocus="this.placeholder= ''",onblur="this.placeholder= 'Product Name'",required)
+            .form-delete.user__name
+                label User Name 
+                input.delete--user_name(type="text",value=`${order.user.name}`,placeholder="User Name",onfocus="this.placeholder= ''",onblur="this.placeholder= 'User Name'",required)
+            .form-delete.order__price
+                label Order price 
+                input.delete--order_price(type="text",value=`${order.price}`,placeholder="User Name",onfocus="this.placeholder= ''",onblur="this.placeholder= 'User Name'",required)
+
+            .delete--order
+                button.btn.btn--delete(data-order-id=`${order.id}`) Delete

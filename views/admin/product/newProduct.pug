@@ -1,0 +1,39 @@
+extends ../adminBase
+
+block content 
+    include ../sidebar/_productSidebar.pug
+
+    section.new--product_container 
+        .new--product_header
+            .back--btn 
+                a(href="/admin/products") 
+                    svg 
+                        use(xlink:href='/img/icons.svg#icon-skip-back')
+                    span Back 
+            
+            .header 
+                h1 New Product 
+
+
+        form.form.new--productCreate__form
+            .form-new.product__name
+                label Name 
+                input.new--product_name(type="text",placeholder="Product Name",onfocus="this.placeholder= ''",onblur="this.placeholder= 'Product Name'",required)
+            .form-new.product__keyword
+                label Keyword 
+                input.new--product_keyword(type="text",placeholder="Product Keyword",onfocus="this.placeholder= ''",onblur="this.placeholder= 'Product Keyword'",required)
+            .form-new.product__brand
+                label Brand 
+                input.new--product_brand(type="text",placeholder="Product Brand",onfocus="this.placeholder= ''",onblur="this.placeholder= 'Product Brand'",required)
+            .form-new.product__description
+                label Description 
+                textarea.new--product_description(cols="40", rows="10",placeholder="Product Description",onfocus="this.placeholder= ''",onblur="this.placeholder= 'Product Description'",required)
+            .form-new.product__price
+                label Price 
+                input.new--product_price(type="text",placeholder="Product Price",onfocus="this.placeholder= ''",onblur="this.placeholder= 'Product Price'",required)
+            .form-new.product__image
+                label Image 
+                input.new--product_image(type="text",placeholder="Product Image",onfocus="this.placeholder= ''",onblur="this.placeholder= 'Product Image'",required)
+
+            .new--product_create 
+                button.btn.btn--create Create

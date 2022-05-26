@@ -1,0 +1,33 @@
+extends ../adminBase
+
+block content 
+    include ../sidebar/_userSidebar.pug
+
+    section.new--user_container 
+        .new--user_header
+            .back--btn 
+                a(href="/admin/users") 
+                    svg 
+                        use(xlink:href='/img/icons.svg#icon-skip-back')
+                    span Back 
+            
+            .header 
+                h1 New User 
+
+
+        form.form.new--userCreate__form
+            .form-new.user__name
+                label Name 
+                input.new--user_name(type="text",placeholder="User Name",onfocus="this.placeholder= ''",onblur="this.placeholder= 'User Name'",required)
+            .form-new.user__email
+                label Email 
+                input.new--user_email(type="text",placeholder="User Email",onfocus="this.placeholder= ''",onblur="this.placeholder= 'User Email'",required)
+            .form-new.user__password
+                label Password 
+                input.new--user_password(type="password",placeholder="********",onfocus="this.placeholder= ''",onblur="this.placeholder= '********'",minlength='8',required)
+            .form-new.user__password-confirm
+                label Password Confirm 
+                input.new--user_password-confirm(type="password",placeholder="********",onfocus="this.placeholder= ''",onblur="this.placeholder= '********'",minlength='8',required)
+
+            .new--user_create 
+                button.btn.btn--create Create

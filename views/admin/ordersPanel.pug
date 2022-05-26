@@ -1,0 +1,31 @@
+extends adminBase
+
+block content 
+    include sidebar/_orderSidebar.pug
+
+    section.order-section 
+        .header 
+            h1 Orders
+
+        .container.order-container 
+            .orders 
+                .orders-keys 
+                    .keys.order-id ID 
+                    .keys.product-name ProductName 
+                    .keys.user-name UserName 
+                    .keys.order-placedAt PlacedAt 
+                    .keys.order-price Price 
+                    .keys.order-action_value Action 
+
+                each order,index in orders 
+                    if order.user
+                        .orders-values 
+                            .values.order-id_value= `${index + 1}`
+                            .values.product-name_value= `${order.product.name}`
+                            .values.user-name_value= `${order.user.name}`
+                            .values.order-placedAt_value= `${order.createdAt.toString().split(' ').splice(0,5).join(' ')}`
+                            .values.order-price= `${order.price}`
+                            .values.order-action_value
+                                a(href=`/admin/orders/delete-order/${order.id}`)
+                                    svg 
+                                        use(xlink:href='/img/icons.svg#icon-delete') 

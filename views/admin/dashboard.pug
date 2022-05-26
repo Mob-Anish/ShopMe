@@ -1,0 +1,26 @@
+extends adminBase
+
+mixin overviewCards(text, icon, number)
+    .card.product-card 
+        .title 
+            h2 #{text}
+        span.content
+            svg 
+                use(xlink:href=`/img/icons.svg#icon-${icon}`)
+            .number 
+                h4= `${number}`
+
+block content
+    //--Sidebar
+    include sidebar/_adminSidebar.pug
+
+    main.main.main-content 
+        .header 
+            h1= `Welcome back, ${user.name.split(' ')[0]} 😎`
+            p= `${date.day} ${date.month} ${date.date} ${date.year}`
+
+        .overview-cards 
+            +overviewCards('Products', 'package', `${numberOf.Products}`)
+            +overviewCards('Users', 'user', `${numberOf.Users}`)
+            +overviewCards('Orders', 'briefcase', `${numberOf.Orders}`)
+        
