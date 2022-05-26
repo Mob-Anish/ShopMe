@@ -3,7 +3,6 @@ config.env
 .cache/
 views/admin/
 controllers/adminController.js
-routes/adminRoutes.js
 public/css/admin.css
 public/js/admin.js
 public/js/adminBundle.js
