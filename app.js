@@ -9,6 +9,7 @@ const xss = require('xss-clean');
 const hpp = require('hpp');
 const cookieParser = require('cookie-parser');
 const compression = require('compression');
+const cors = require('cors');
 
 const productRouter = require('./routes/productRoutes');
 const userRouter = require('./routes/userRoutes');
@@ -34,6 +35,17 @@ app.set('views', [
 ]);
 
 //------------ GLOBAL MIDDLEWARE ---------//
+
+// Implement CORS
+app.use(cors());
+// Access-Control-Allow-Origin
+// app.use(
+//   cors({
+//     origin: 'https://www.shopme.com',
+//   })
+// );
+
+app.options('*', cors());
 
 //------ Serving Static Files -------//
 app.use(express.static(path.join(__dirname, 'public')));
