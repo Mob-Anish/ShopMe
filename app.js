@@ -8,6 +8,7 @@ const mongoSanitize = require('express-mongo-sanitize');
 const xss = require('xss-clean');
 const hpp = require('hpp');
 const cookieParser = require('cookie-parser');
+const compression = require('compression');
 
 const productRouter = require('./routes/productRoutes');
 const userRouter = require('./routes/userRoutes');
@@ -39,7 +40,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 //app.use(helmet());
 
 if (process.env.NODE_ENV === 'development' || 'production') {
-  console.log(process.env.NODE_ENV);
   app.use(morgan('dev'));
 }
 
@@ -64,9 +64,10 @@ app.use(xss());
 
 // Test Middleware
 app.use((req, res, next) => {
-  console.log(req.cookies);
   next();
 });
+
+app.use(compression());
 
 //--------- Api Routes ----------//
 app.use('/', viewRouter);

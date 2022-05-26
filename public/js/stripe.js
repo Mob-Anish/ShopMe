@@ -9,7 +9,7 @@ export const orderProduct = async (productId) => {
   try {
     // 1) Get checkout session from API
     const session = await axios(
-      `http://localhost:3000/api/v1/orders/checkout-session/${productId}`
+      `/api/v1/orders/checkout-session/${productId}`
     );
 
     // 2)  Create checkout form and charge through card.

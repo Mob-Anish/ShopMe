@@ -22,9 +22,6 @@ mongoose
   })
   .then(() => {
     console.log('DB connection succesful');
-  })
-  .catch((err) => {
-    console.log('DB connection failed');
   });
 
 //----- Server is started on port -------//

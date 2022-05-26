@@ -51,7 +51,6 @@ exports.createOrder = catchAsync(async (req, res, next) => {
   await Order.create({ product, user, price });
 
   const users = await User.findById({ _id: user });
-  console.log(users);
 
   // SEND EMAIL IN YOUR ADDRESS (After order)
   const url = `http://localhost:3000/account/${users.name}/my-orders`;
