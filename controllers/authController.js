@@ -14,23 +14,18 @@ const signToken = (id) => {
 };
 
 // Sending JWT web tokens.
-const createSendToken = (user, statusCode, res) => {
+const createSendToken = (user, statusCode, req, res) => {
   // Calling Token function
   const token = signToken(user._id);
 
-  // Sending token through cookie
-  const cookieOptions = {
+  res.cookie('jwt', token, {
     // In miliseconds
     expires: new Date(
       Date.now() + process.env.JWT_COOKIE_EXPIRES_IN * 24 * 60 * 60 * 1000
     ),
     httpOnly: true,
-  };
-
-  // For production mode (HTTPS)
-  if (process.env.NODE_ENV === 'production') cookieOptions.secure = true;
-
-  res.cookie('jwt', token, cookieOptions);
+    secure: req.secure || req.headers('x-forwarded-proto') === 'https',
+  });
 
   // Remove the password from response
   user.password = undefined;
@@ -58,7 +53,7 @@ exports.signup = catchAsync(async (req, res, next) => {
   const url = `${req.protocol}://${req.get('host')}/`;
   await new Email(newUser, url).sendWelcome();
 
-  createSendToken(newUser, 201, res); // jwt token
+  createSendToken(newUser, 201, req, res); // jwt token
 });
 
 //---- LOGIN ----//
@@ -80,7 +75,7 @@ exports.login = catchAsync(async (req, res, next) => {
   }
 
   // 3) If ok, send token to client
-  createSendToken(user, 200, res); // jwt token
+  createSendToken(user, 200, req, res); // jwt token
 });
 
 // PROTECT ROUTES FROM UNAUTHORIZED ACCESSS (Authentication, Verification) AFTER LOGIN OR SIGNUP PROCESS

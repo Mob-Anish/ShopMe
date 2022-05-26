@@ -20,6 +20,8 @@ const globalErrorController = require('./controllers/errorController');
 
 const app = express();
 
+app.enable('trust proxy');
+
 // Setting pug for view template
 app.set('view engine', 'pug');
 app.set('views', [
@@ -37,7 +39,7 @@ app.set('views', [
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Security HTTP Header
-//app.use(helmet());
+app.use(helmet());
 
 if (process.env.NODE_ENV === 'development' || 'production') {
   app.use(morgan('dev'));

@@ -29,3 +29,18 @@ const port = process.env.PORT || 3000;
 const server = app.listen(port, () => {
   console.log(`Running on port:${port}`);
 });
+
+process.on('unhandledRejection', (err) => {
+  console.log('UNHANDLED REJECTION!');
+  console.log(err.name, err.message);
+  server.close(() => {
+    process.exit(1);
+  });
+});
+
+process.on('SIGTERM', () => {
+  console.log('SIGTERM RECEIVED 👈');
+  sever.close(() => {
+    console.log('Process terminated');
+  });
+});
