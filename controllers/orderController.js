@@ -70,7 +70,7 @@ const createOrder = async (session) => {
 
   // SEND EMAIL IN YOUR ADDRESS (After order)
   const url = `/account/${user.name}/my-orders`;
-  await new Email(users, url).sendOrderResponse();
+  await new Email(user, url).sendOrderResponse();
 };
 
 exports.webhookCheckout = (req, res, next) => {
