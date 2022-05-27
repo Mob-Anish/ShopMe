@@ -66,6 +66,8 @@ const createOrder = async (session) => {
   const user = (await User.findOne({ email: session.customer_email })).id;
   const price = session.line_items[0].total / 100;
 
+  console.log(product, user, price);
+
   await Order.create({ product, user, price });
 
   // SEND EMAIL IN YOUR ADDRESS (After order)
