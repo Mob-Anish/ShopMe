@@ -77,6 +77,7 @@ const createOrder = async (session) => {
 
 exports.webhookCheckout = (req, res, next) => {
   const signature = req.headers['stripe-signature'];
+  console.log('webhook run');
 
   let event;
   try {
@@ -89,8 +90,10 @@ exports.webhookCheckout = (req, res, next) => {
     return res.status(400).send(`Webhook error: ${err.message}`);
   }
 
-  if (event.type === 'checkout.session.completed')
+  if (event.type === 'checkout.session.completed') {
+    console.log('webhook run 2');
     createOrder(event.data.object);
+  }
 
   res.status(200).json({ received: true });
 };
