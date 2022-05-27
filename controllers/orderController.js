@@ -54,7 +54,7 @@ exports.createOrder = catchAsync(async (req, res, next) => {
   const users = await User.findById({ _id: user });
 
   // SEND EMAIL IN YOUR ADDRESS (After order)
-  const url = `/account/${users.name}/my-orders`;
+  const url = `https://shop-me-retro.herokuapp.com/account/${users.name}/my-orders`;
   await new Email(users, url).sendOrderResponse();
 
   // Redirect to home page.
