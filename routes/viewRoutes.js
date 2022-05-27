@@ -6,10 +6,19 @@ const orderController = require('../controllers/orderController');
 const router = express.Router();
 
 // Main page
-router.get('/', orderController.createOrder, authController.isLoggedIn, viewController.getShopMe);
+router.get(
+  '/',
+  // orderController.createOrder,
+  authController.isLoggedIn,
+  viewController.getShopMe
+);
 
 // Searched product page
-router.get('/search', authController.isLoggedIn, viewController.getSearchProduct);
+router.get(
+  '/search',
+  authController.isLoggedIn,
+  viewController.getSearchProduct
+);
 
 // Product Page
 router.get(
@@ -28,6 +37,10 @@ router.get('/signup', authController.isLoggedIn, viewController.signUp);
 router.get('/account/:name', authController.protect, viewController.getAccount);
 
 // Order product page
-router.get('/account/:name/my-orders', authController.protect, viewController.getMyProducts);
+router.get(
+  '/account/:name/my-orders',
+  authController.protect,
+  viewController.getMyProducts
+);
 
 module.exports = router;

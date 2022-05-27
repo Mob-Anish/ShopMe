@@ -14,9 +14,10 @@ exports.getCheckoutSession = catchAsync(async (req, res, next) => {
   // 2) Create Checkout Session
   const session = await stripe.checkout.sessions.create({
     payment_method_types: ['card'],
-    success_url: `${req.protocol}://${req.get('host')}/?product=${
-      req.params.productId
-    }&user=${req.user.id}&price=${product.price}`,
+    // success_url: `${req.protocol}://${req.get('host')}/?product=${
+    //   req.params.productId
+    // }&user=${req.user.id}&price=${product.price}`,
+    success_url: `${req.protocol}://${req.get('host')}/`,
     cancel_url: `${req.protocol}://${req.get('host')}/products/${product.slug}`,
     customer_email: req.user.email,
     client_reference_id: req.params.productId,
@@ -41,24 +42,56 @@ exports.getCheckoutSession = catchAsync(async (req, res, next) => {
 // CreateOrder
 // It acts as a middleware in the root route ('/')
 // After payment the success route create an  order in db.
-exports.createOrder = catchAsync(async (req, res, next) => {
-  // In the query string but it is temporary and unsecure
-  const { product, user, price } = req.query;
+// exports.createOrder = catchAsync(async (req, res, next) => {
+//   // In the query string but it is temporary and unsecure
+//   const { product, user, price } = req.query;
 
-  if (!product && !user && !price) return next();
+//   if (!product && !user && !price) return next();
 
-  // Create new order in DB
+//   // Create new order in DB
+//   await Order.create({ product, user, price });
+
+//   const users = await User.findById({ _id: user });
+
+//   // SEND EMAIL IN YOUR ADDRESS (After order)
+//   const url = `/account/${users.name}/my-orders`;
+//   await new Email(users, url).sendOrderResponse();
+
+//   // Redirect to home page.
+//   res.redirect(req.originalUrl.split('?')[0]);
+// });
+
+const createOrder = async (session) => {
+  const product = session.client_reference_id;
+  const user = (await User.findOne({ email: session.customer_email })).id;
+  const price = session.line_items[0].amount / 100;
+
   await Order.create({ product, user, price });
 
-  const users = await User.findById({ _id: user });
-
   // SEND EMAIL IN YOUR ADDRESS (After order)
-  const url = `http://localhost:3000/account/${users.name}/my-orders`;
+  const url = `/account/${user.name}/my-orders`;
   await new Email(users, url).sendOrderResponse();
+};
 
-  // Redirect to home page.
-  res.redirect(req.originalUrl.split('?')[0]);
-});
+exports.webhookCheckout = (req, res, next) => {
+  const signature = req.headers['stripe-signature'];
+
+  let event;
+  try {
+    const event = stripe.webhooks.constructEvent(
+      req.body,
+      signature,
+      process.env.STRIPE_WEBHOOK_SECRET_KEY
+    );
+  } catch (err) {
+    return res.status(400).send(`Webhook error: ${err.message}`);
+  }
+
+  if (event.type === 'checkout.session.completed')
+    createOrder(event.data.object);
+
+  res.status(200).json({ received: true });
+};
 
 //---- Get all orders ----//
 exports.getAllOrders = catchAsync(async (req, res, next) => {

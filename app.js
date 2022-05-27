@@ -14,6 +14,7 @@ const cors = require('cors');
 const productRouter = require('./routes/productRoutes');
 const userRouter = require('./routes/userRoutes');
 const orderRouter = require('./routes/orderRoutes');
+const orderController = require('./controllers/orderController');
 const viewRouter = require('./routes/viewRoutes');
 const adminRouter = require('./routes/adminRoutes');
 const AppError = require('./utils/appError');
@@ -57,14 +58,21 @@ if (process.env.NODE_ENV === 'development' || 'production') {
   app.use(morgan('dev'));
 }
 
-// // Rate Limiting to api request
-// const limiter = rateLimit({
-//   max: 100,
-//   windowMs: 60 * 60 * 1000,
-//   message: 'Too many request, please try again in an hour!!',
-// });
-// // Limiting req only to api route
-// app.use('/api', limiter);
+// Rate Limiting to api request
+const limiter = rateLimit({
+  max: 100,
+  windowMs: 60 * 60 * 1000,
+  message: 'Too many request, please try again in an hour!!',
+});
+// Limiting req only to api route
+app.use('/api', limiter);
+
+// Stripe Checkout
+app.post(
+  '/webhook-checkout',
+  express.raw({ type: 'application/json' }),
+  orderController.webhookCheckout
+);
 
 // Body parser, reading data from body in req.body
 app.use(express.json());
