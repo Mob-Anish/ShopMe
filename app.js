@@ -14,7 +14,7 @@ const cors = require('cors');
 const productRouter = require('./routes/productRoutes');
 const userRouter = require('./routes/userRoutes');
 const orderRouter = require('./routes/orderRoutes');
-const orderController = require('./controllers/orderController');
+// const orderController = require('./controllers/orderController');
 const viewRouter = require('./routes/viewRoutes');
 const adminRouter = require('./routes/adminRoutes');
 const AppError = require('./utils/appError');
@@ -65,11 +65,11 @@ const limiter = rateLimit({
 app.use('/api', limiter);
 
 // Stripe Checkout
-app.post(
-  '/webhook-checkout',
-  express.raw({ type: 'application/json' }),
-  orderController.webhookCheckout
-);
+// app.post(
+//   '/webhook-checkout',
+//   express.raw({ type: 'application/json' }),
+//   orderController.webhookCheckout
+// );
 
 // Body parser, reading data from body in req.body
 app.use(express.json());

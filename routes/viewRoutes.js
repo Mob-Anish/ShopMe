@@ -8,7 +8,7 @@ const router = express.Router();
 // Main page
 router.get(
   '/',
-  // orderController.createOrder,
+  orderController.createOrder,
   authController.isLoggedIn,
   viewController.getShopMe
 );
