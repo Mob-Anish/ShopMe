@@ -64,7 +64,7 @@ exports.getCheckoutSession = catchAsync(async (req, res, next) => {
 const createOrder = async (session) => {
   const product = session.client_reference_id;
   const user = (await User.findOne({ email: session.customer_email })).id;
-  const price = session.display_items[0].amount / 100;
+  const price = session.line_items[0].total / 100;
 
   await Order.create({ product, user, price });
 
