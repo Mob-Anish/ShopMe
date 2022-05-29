@@ -50,3 +50,17 @@ yarn / npm run dev
 ```
 
 ### Some Snapshots 📷
+
+- User side
+
+![1](https://user-images.githubusercontent.com/75711381/170856397-65b8993a-a686-466f-9439-3071a7234fc2.PNG)
+
+![2](https://user-images.githubusercontent.com/75711381/170856402-6f3978ed-c649-4f4c-9f0f-8cef0b9f45cf.PNG)
+
+![5](https://user-images.githubusercontent.com/75711381/170856409-59890fea-e623-414e-9e15-cee670dc769b.PNG)
+
+- Admin Panel
+
+![3](https://user-images.githubusercontent.com/75711381/170856404-e630f5e4-3e67-472e-b722-1b9f49493778.PNG)
+
+![4](https://user-images.githubusercontent.com/75711381/170856407-9939a23a-b0a0-42ea-b345-1ab2306424b5.PNG)
