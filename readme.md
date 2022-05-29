@@ -1,4 +1,4 @@
-# ShopMe
+# ShopMe 🛒
 
 ### Overview 📑
 
