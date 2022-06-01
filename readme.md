@@ -9,7 +9,7 @@
 ### ShopMe Api 📴
 
 - It is created using node, express and mongodb.
-- You can see the api documentation 👉 [ShopMe Api](https://documenter.getpostman.com/view/12734549/Uz5DrdC2)
+- You can see the api documentation 👉 [ShopMe Api](https://documenter.getpostman.com/view/12734549/Uz5DrdC2).
 
 ### Limitation 😥
 
