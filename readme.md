@@ -6,6 +6,11 @@
 - You can view the project live by clicking this 👉 [ShopMe](https://shop-me-retro.herokuapp.com/).
 - Big Shout-out to [Jonas Schmedtmann](https://github.com/jonasschmedtmann) 🙏🙏 for helping me to create this ecommerce application.
 
+### ShopMe Api 📴
+
+- It is created using node, express and mongodb.
+- You can see the api documentation 👉 [ShopMe Api](https://documenter.getpostman.com/view/12734549/Uz5DrdC2)
+
 ### Limitation 😥
 
 - It is not responsive at all mainly developed for web or large screen(1920 - 1080). So if u want to view on your screen zoom out a bit. Thank you 🙏.
