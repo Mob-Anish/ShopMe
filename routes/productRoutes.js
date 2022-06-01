@@ -16,8 +16,8 @@ router
 router
   .route('/:id')
   .get(
-    authController.protect,
-    authController.restrictTo('admin'),
+    // authController.protect,
+    // authController.restrictTo('admin'),
     productController.getProduct
   )
   .patch(
