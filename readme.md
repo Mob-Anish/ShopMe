@@ -3,7 +3,7 @@
 ### Overview 📑
 
 - ShopeMe is an ecommerce based web application built using nodejs and pug. It is a simple view and buy product application where you can just view, search the products and order them after the payment.
-- You can view the project live by clicking this 👉 [ShopMe](https://shop-me-retro.herokuapp.com/).
+- You can view the project live by clicking this 👉 [ShopMe](https://shop-me-retro.onrender.com/).
 - Big Shout-out to [Jonas Schmedtmann](https://github.com/jonasschmedtmann) 🙏🙏 for helping me to create this ecommerce application.
 
 ### ShopMe Api 📴
